@@ -21,4 +21,18 @@ describe Rover do
       expect(rover.y).to eq(15)
     end
   end
+
+  describe '#draw' do
+    let(:x){11}
+    let(:y){12}
+
+    before(:each) do
+      rover.teleport x, y
+    end
+
+    it 'should draw image' do
+      expect(rover.image).to receive(:draw).with(x, y, 1)
+      rover.draw
+    end
+  end
 end

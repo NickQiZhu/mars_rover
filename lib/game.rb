@@ -1,5 +1,7 @@
 require 'gosu'
 
+require_relative 'rover'
+
 class Game < Gosu::Window
   DEFAULT_WIDTH = 640
   DEFAULT_HEIGHT = 480

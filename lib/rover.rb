@@ -10,4 +10,8 @@ class Rover
     @x = x
     @y = y
   end
+
+  def draw
+    @image.draw(@x, @y, 1)
+  end
 end
