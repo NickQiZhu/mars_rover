@@ -16,6 +16,10 @@ describe Game do
     it 'should set background image' do
       expect(game.background_image).to be_a(Gosu::Image)
     end
+
+    it 'should create rover' do
+      expect(game.rover).to be_a(Rover)
+    end
   end
 
   describe '#start' do
@@ -33,8 +37,9 @@ describe Game do
   end
 
   describe '#draw' do
-    it 'should draw background image' do
+    it 'should draw background image and rover' do
       expect(game.background_image).to receive(:draw).with(0, 0, 0)
+      expect(game.rover).to receive(:draw)
       game.draw
     end
   end
