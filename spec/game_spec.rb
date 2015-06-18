@@ -12,6 +12,14 @@ describe Game do
       expect(game.width).to eq(Game::DEFAULT_WIDTH)
       expect(game.height).to eq(Game::DEFAULT_HEIGHT)
     end
+
+    it 'should set caption' do
+      expect(game.caption).to_not be_nil
+    end
+
+    it 'should set background image' do
+      expect(game.background_image).to be_a(Gosu::Image)
+    end
   end
 
   describe '#start' do
