@@ -1,7 +1,10 @@
 require 'gosu'
 
 class Game < Gosu::Window
-  def initialize(width, height)
+  DEFAULT_WIDTH = 800
+  DEFAULT_HEIGHT = 640
+
+  def initialize(width = DEFAULT_WIDTH, height = DEFAULT_HEIGHT)
     super width, height
   end
 end
