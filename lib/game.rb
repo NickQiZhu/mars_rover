@@ -1,22 +1,27 @@
 require 'gosu'
 
-class Game < Gosu::Window
+class Game
   DEFAULT_WIDTH = 800
   DEFAULT_HEIGHT = 640
 
-  attr_accessor :background_image
+  attr_accessor :window, :background_image
+
+  def self.new_window(width, height)
+    window = Gosu::Window.new(width, height)
+    window.caption = 'Mars Rover'
+    window
+  end
 
   def initialize(width = DEFAULT_WIDTH, height = DEFAULT_HEIGHT)
-    super(width, height)
-    self.caption = 'Mars Rover'
+    @window = Game.new_window(width, height)
     @background_image = Gosu::Image.new('media/surface.jpg', :tileable => true)
   end
 
   def start
-    show
+     @window.show
   end
 
   def shutdown
-    close
+    @window.close
   end
 end
