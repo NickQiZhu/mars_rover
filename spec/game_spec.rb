@@ -1,16 +1,14 @@
 require 'spec_helper.rb'
 
 describe Game do
+  subject(:game) { Game.new }
+
+  after(:each) do
+    game.close
+  end
 
   describe '#initialize' do
     it 'should set window size' do
-      game = Game.new(1024, 860)
-      expect(game.width).to eq(1024)
-      expect(game.height).to eq(860)
-    end
-
-    it 'should set default window size' do
-      game = Game.new
       expect(game.width).to eq(Game::DEFAULT_WIDTH)
       expect(game.height).to eq(Game::DEFAULT_HEIGHT)
     end
@@ -18,9 +16,15 @@ describe Game do
 
   describe '#start' do
     it 'should display window' do
-      game = Game.new
       expect(game).to receive(:show)
       game.start
+    end
+  end
+
+  describe '#shutdow' do
+    it 'should close window' do
+      expect(game).to receive(:close).at_least(1)
+      game.shutdown
     end
   end
 
