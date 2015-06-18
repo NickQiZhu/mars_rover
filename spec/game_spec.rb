@@ -16,4 +16,12 @@ describe Game do
     end
   end
 
+  describe '#start' do
+    it 'should display window' do
+      game = Game.new
+      expect(game).to receive(:show)
+      game.start
+    end
+  end
+
 end

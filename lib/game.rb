@@ -7,4 +7,8 @@ class Game < Gosu::Window
   def initialize(width = DEFAULT_WIDTH, height = DEFAULT_HEIGHT)
     super width, height
   end
+
+  def start
+    show
+  end
 end
