@@ -18,7 +18,7 @@ class Rover
 
   def move
     3.times{
-      @game.cmd_queue << MoveCommand.new(0, -5)
+      @game.cmd_queue << MoveCommand.new(self, 0, -5)
     }
   end
 end

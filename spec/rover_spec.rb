@@ -1,7 +1,7 @@
 require 'spec_helper.rb'
 
 describe Rover do
-  let(:game){Game.new}
+  let(:game) { Game.new }
   subject(:rover) { Rover.new(game) }
 
   describe '#initialize' do
@@ -27,13 +27,13 @@ describe Rover do
     it 'should enqueue a series of position command' do
       rover.move
       expect(game.cmd_queue.size).to eq(3)
-      expect(game.cmd_queue.first).to eq(MoveCommand.new(0, -5))
+      game.cmd_queue.each { |cmd| expect(cmd).to eq(MoveCommand.new(rover, 0, -5)) }
     end
   end
 
   describe '#draw' do
-    let(:x){11}
-    let(:y){12}
+    let(:x) { 11 }
+    let(:y) { 12 }
 
     before(:each) do
       rover.position x, y
