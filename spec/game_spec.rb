@@ -14,6 +14,18 @@ describe Game do
     end
   end
 
+  describe '#setup' do
+    it 'should set background' do
+      game.setup
+      expect(game.elements.select { |e| e.is_a? Background }.size).to eq(1)
+    end
+
+    it 'should create rover element' do
+      game.setup
+      expect(game.elements.select { |e| e.is_a? Rover }.size).to eq(1)
+    end
+  end
+
   describe '#start' do
     it 'should display window' do
       expect(game).to receive(:show)

@@ -1,3 +1,5 @@
 require_relative 'lib/game'
 
-Game.new.start
+game = Game.new
+game.setup
+game.start
