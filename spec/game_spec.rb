@@ -15,14 +15,16 @@ describe Game do
   end
 
   describe '#setup' do
-    it 'should set background' do
-      game.setup
-      expect(game.elements.select { |e| e.is_a? Background }.size).to eq(1)
+    before(:each) { game.setup }
+
+    [Background, Rover].each do |element_class|
+      it "should set #{element_class} element" do
+        has_element_by_class?(game, element_class)
+      end
     end
 
-    it 'should create rover element' do
-      game.setup
-      expect(game.elements.select { |e| e.is_a? Rover }.size).to eq(1)
+    def has_element_by_class?(game, element_class)
+      expect(game.elements.select { |e| e.is_a? element_class }.size).to eq(1)
     end
   end
 
