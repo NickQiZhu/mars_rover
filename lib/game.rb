@@ -17,7 +17,7 @@ class Game < Gosu::Window
   end
 
   def setup
-    @elements << Background.new << Rover.new(self)
+    @elements << Background.new(self) << Rover.new(self)
   end
 
   def start

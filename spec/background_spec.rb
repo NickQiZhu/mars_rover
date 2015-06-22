@@ -1,7 +1,7 @@
 require 'spec_helper.rb'
 
 describe Background do
-  subject(:background) { Background.new }
+  subject(:background) { Background.new(instance_double(Game)) }
 
   describe '#initialize' do
     it 'should load background image' do

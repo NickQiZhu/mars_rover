@@ -1,8 +1,10 @@
-class Rover
-  attr_reader :x, :y, :image
+require_relative 'visual_element'
+
+class Rover < VisualElement
+  attr_reader :x, :y
 
   def initialize(game)
-    @game = game
+    super game
     @x = @y = 0
     @image = Gosu::Image.new('media/rover.bmp')
   end
@@ -17,7 +19,7 @@ class Rover
   end
 
   def move
-    3.times{
+    3.times {
       @game.cmd_queue << MoveCommand.new(self, 0, -5)
     }
   end

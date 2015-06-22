@@ -1,7 +1,9 @@
-class Background
-  attr_accessor :image
+require_relative 'visual_element'
 
-  def initialize
+class Background < VisualElement
+
+  def initialize(game)
+    super game
     @image = Gosu::Image.new('media/surface.png', :tileable => true)
   end
 
