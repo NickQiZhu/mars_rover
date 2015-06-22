@@ -50,11 +50,23 @@ describe Game do
       game.draw
     end
 
-    it 'should execute all queued commands' do
-      cmd = instance_double(MoveCommand)
-      game.cmd_queue << cmd
-      expect(cmd).to receive(:execute)
-      game.draw
+    context 'command execution routine' do
+      let(:cmd) { instance_double(MoveCommand) }
+
+      before(:each) do
+        expect(cmd).to receive(:execute)
+        game.cmd_queue << cmd
+      end
+
+      it 'should execute first queued commands' do
+        game.cmd_queue << instance_double(MoveCommand)
+        game.draw
+      end
+
+      it 'should consume queued command after execution' do
+        game.draw
+        expect(game.cmd_queue).to be_empty
+      end
     end
   end
 end

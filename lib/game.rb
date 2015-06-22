@@ -25,7 +25,10 @@ class Game < Gosu::Window
   end
 
   def draw
-    @cmd_queue.each { |cmd| cmd.execute }
+    unless @cmd_queue.empty?
+      @cmd_queue.slice!(0).execute
+    end
+
     @elements.each { |e| e.draw }
   end
 
