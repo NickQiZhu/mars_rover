@@ -4,4 +4,9 @@ class VisualElement
   def initialize(game)
     @game = game
   end
+
+  # abstract methods
+
+  def update
+  end
 end

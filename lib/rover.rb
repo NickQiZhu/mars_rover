@@ -1,11 +1,13 @@
 require_relative 'visual_element'
+require_relative 'move_command'
 
 class Rover < VisualElement
   attr_reader :x, :y
 
   def initialize(game)
     super game
-    @x = @y = 0
+    @x = 320
+    @y = 240
     @image = Gosu::Image.new('media/rover.bmp')
   end
 
@@ -25,6 +27,8 @@ class Rover < VisualElement
   end
 
   def update
-
+    if Gosu::button_down?(Gosu::KbUp)
+          move
+        end
   end
 end

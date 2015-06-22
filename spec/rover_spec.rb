@@ -5,9 +5,9 @@ describe Rover do
   subject(:rover) { Rover.new(game) }
 
   describe '#initialize' do
-    it 'should set position to (0, 0)' do
-      expect(rover.x).to eq(0)
-      expect(rover.y).to eq(0)
+    it 'should set initial position' do
+      expect(rover.x).to be >= 0
+      expect(rover.y).to be >= 0
     end
 
     it 'should load image' do
@@ -42,6 +42,20 @@ describe Rover do
     it 'should draw image' do
       expect(rover.image).to receive(:draw).with(x, y, 1)
       rover.draw
+    end
+  end
+
+  describe '#update' do
+    it 'should trigger move if up button is pressed' do
+      expect(Gosu).to receive(:button_down?).with(Gosu::KbUp).and_return(true)
+      expect(rover).to receive(:move)
+      rover.update
+    end
+
+    it 'should not trigger move if up button is not pressed' do
+      expect(Gosu).to receive(:button_down?).with(Gosu::KbUp).and_return(false)
+      expect(rover).to_not receive(:move)
+      rover.update
     end
   end
 end
