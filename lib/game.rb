@@ -25,18 +25,35 @@ class Game < Gosu::Window
   end
 
   def draw
-    unless @cmd_queue.empty?
-      @cmd_queue.slice!(0).execute
-    end
-
-    @elements.each { |e| e.draw }
+    execute_command
+    redraw_all_elements
   end
 
   def update
-    @elements.each {|e| e.update }
+    update_all_elements
   end
 
   def shutdown
     close
+  end
+
+  private
+
+  def execute_command
+    unless @cmd_queue.empty?
+      dequeue_command.execute
+    end
+  end
+
+  def dequeue_command
+    @cmd_queue.slice!(0)
+  end
+
+  def redraw_all_elements
+    @elements.each { |e| e.draw }
+  end
+
+  def update_all_elements
+    @elements.each { |e| e.update }
   end
 end
