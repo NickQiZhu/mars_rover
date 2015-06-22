@@ -1,5 +1,5 @@
 class VisualElement
-  MOVEMENT_FRAMES = 10
+  MOVEMENT_FRAMES = 1
   MOVEMENT_STEP_SIZE = -1
 
   attr_accessor :image
