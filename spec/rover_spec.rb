@@ -36,20 +36,29 @@ describe Rover do
     it 'should generate a series of turn command' do
       rover.turn_left
       expect(game.cmd_queue.size).to eq(Rover::MOVEMENT_STEPS)
-      game.cmd_queue.each { |cmd| expect(cmd).to eq(TurnCommand.new(rover, -33)) }
+      game.cmd_queue.each { |cmd| expect(cmd).to eq(TurnCommand.new(rover, -4)) }
+    end
+  end
+
+  describe '#turn' do
+    it 'should change rover angle by given degree' do
+      rover.turn(10)
+      expect(rover.angle).to eq(10)
     end
   end
 
   describe '#draw' do
     let(:x) { 11 }
     let(:y) { 12 }
+    let(:angle) { 33 }
 
     before(:each) do
       rover.position x, y
+      rover.turn(angle)
     end
 
     it 'should draw image' do
-      expect(rover.image).to receive(:draw).with(x, y, Rover::Z_INDEX)
+      expect(rover.image).to receive(:draw_rot).with(x, y, Rover::Z_INDEX, angle)
       rover.draw
     end
   end

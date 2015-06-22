@@ -21,7 +21,7 @@ class Rover < VisualElement
   end
 
   def draw
-    image.draw(@x, @y, Z_INDEX)
+    image.draw_rot(@x, @y, Z_INDEX, @angle)
   end
 
   def move
@@ -32,12 +32,12 @@ class Rover < VisualElement
 
   def turn_left
     MOVEMENT_STEPS.times {
-      @game.cmd_queue << TurnCommand.new(self, -33)
+      @game.cmd_queue << TurnCommand.new(self, -4)
     }
   end
 
   def turn(degree)
-
+    @angle += degree
   end
 
   def update
