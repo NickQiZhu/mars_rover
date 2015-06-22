@@ -32,6 +32,10 @@ class Game < Gosu::Window
     @elements.each { |e| e.draw }
   end
 
+  def update
+    @elements.each {|e| e.update }
+  end
+
   def shutdown
     close
   end

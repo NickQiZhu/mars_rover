@@ -69,4 +69,13 @@ describe Game do
       end
     end
   end
+
+  describe '#update' do
+    it 'should trigger #update on all visual elements' do
+      rover = instance_double(Rover)
+      game.elements << rover
+      expect(rover).to receive(:update)
+      game.update
+    end
+  end
 end

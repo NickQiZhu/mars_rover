@@ -21,4 +21,8 @@ class Rover
       @game.cmd_queue << MoveCommand.new(self, 0, -5)
     }
   end
+
+  def update
+
+  end
 end
