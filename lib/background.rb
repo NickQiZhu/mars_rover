@@ -1,6 +1,7 @@
 require_relative 'visual_element'
 
 class Background < VisualElement
+  Z_INDEX = 0
 
   def initialize(game)
     super game
@@ -8,6 +9,6 @@ class Background < VisualElement
   end
 
   def draw
-    @image.draw(0, 0, 0)
+    @image.draw(0, 0, Z_INDEX)
   end
 end

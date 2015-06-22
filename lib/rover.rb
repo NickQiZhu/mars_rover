@@ -2,6 +2,8 @@ require_relative 'visual_element'
 require_relative 'move_command'
 
 class Rover < VisualElement
+  Z_INDEX = 1
+
   attr_reader :x, :y
 
   def initialize(game)
@@ -17,12 +19,12 @@ class Rover < VisualElement
   end
 
   def draw
-    image.draw(@x, @y, 1)
+    image.draw(@x, @y, Z_INDEX)
   end
 
   def move
-    3.times {
-      @game.cmd_queue << MoveCommand.new(self, 0, -5)
+    MOVEMENT_FRAMES.times {
+      @game.cmd_queue << MoveCommand.new(self, 0, MOVEMENT_STEP_SIZE)
     }
   end
 

@@ -17,17 +17,18 @@ describe Rover do
 
   describe '#position' do
     it 'should set x, y directly' do
-      rover.position 10, 15
-      expect(rover.x).to eq(10)
-      expect(rover.y).to eq(15)
+      x = 10; y = 15
+      rover.position x, y
+      expect(rover.x).to eq(x)
+      expect(rover.y).to eq(y)
     end
   end
 
   describe '#move' do
     it 'should enqueue a series of position command' do
       rover.move
-      expect(game.cmd_queue.size).to eq(3)
-      game.cmd_queue.each { |cmd| expect(cmd).to eq(MoveCommand.new(rover, 0, -5)) }
+      expect(game.cmd_queue.size).to eq(Rover::MOVEMENT_FRAMES)
+      game.cmd_queue.each { |cmd| expect(cmd).to eq(MoveCommand.new(rover, 0, Rover::MOVEMENT_STEP_SIZE)) }
     end
   end
 
@@ -40,7 +41,7 @@ describe Rover do
     end
 
     it 'should draw image' do
-      expect(rover.image).to receive(:draw).with(x, y, 1)
+      expect(rover.image).to receive(:draw).with(x, y, Rover::Z_INDEX)
       rover.draw
     end
   end
