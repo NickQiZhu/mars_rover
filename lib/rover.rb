@@ -5,12 +5,13 @@ require_relative 'turn_command'
 class Rover < VisualElement
   Z_INDEX = 1
 
-  attr_reader :x, :y
+  attr_reader :x, :y, :angle
 
   def initialize(game)
     super game
     @x = 320
     @y = 240
+    @angle = 0
     @image = Gosu::Image.new('media/rover.bmp')
   end
 
@@ -33,6 +34,10 @@ class Rover < VisualElement
     MOVEMENT_STEPS.times {
       @game.cmd_queue << TurnCommand.new(self, -33)
     }
+  end
+
+  def turn(degree)
+
   end
 
   def update

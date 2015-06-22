@@ -9,6 +9,10 @@ class TurnCommand < BaseCommand
     @degree = degree
   end
 
+  def execute
+    @rover.turn(@degree)
+  end
+
   def ==(cmd)
     same_command?(cmd) && degree == cmd.degree
   end
