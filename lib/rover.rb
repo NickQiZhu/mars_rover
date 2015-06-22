@@ -1,5 +1,6 @@
 require_relative 'visual_element'
 require_relative 'move_command'
+require_relative 'turn_command'
 
 class Rover < VisualElement
   Z_INDEX = 1
@@ -37,6 +38,10 @@ class Rover < VisualElement
   def update
     if Gosu::button_down?(Gosu::KbUp)
       move
+    end
+
+    if Gosu::button_down?(Gosu::KbLeft)
+      turn_left
     end
   end
 end

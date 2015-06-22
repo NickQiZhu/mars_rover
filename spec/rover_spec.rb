@@ -55,16 +55,36 @@ describe Rover do
   end
 
   describe '#update' do
-    it 'should trigger move if up button is pressed' do
-      expect(Gosu).to receive(:button_down?).with(Gosu::KbUp).and_return(true)
-      expect(rover).to receive(:move)
-      rover.update
+    before(:each) do
+      allow(Gosu).to receive(:button_down?).and_return(false)
     end
 
-    it 'should not trigger move if up button is not pressed' do
-      expect(Gosu).to receive(:button_down?).with(Gosu::KbUp).and_return(false)
-      expect(rover).to_not receive(:move)
-      rover.update
+    context 'move' do
+      it 'should be triggered if up button is pressed' do
+        expect(Gosu).to receive(:button_down?).with(Gosu::KbUp).and_return(true)
+        expect(rover).to receive(:move)
+        rover.update
+      end
+
+      it 'should not be triggered if up button is not pressed' do
+        expect(Gosu).to receive(:button_down?).with(Gosu::KbUp).and_return(false)
+        expect(rover).to_not receive(:move)
+        rover.update
+      end
+    end
+
+    context 'turn left' do
+      it 'should be triggered if left button is pressed' do
+        expect(Gosu).to receive(:button_down?).with(Gosu::KbLeft).and_return(true)
+        expect(rover).to receive(:turn_left)
+        rover.update
+      end
+
+      it 'should not be triggered if left button is not pressed' do
+        expect(Gosu).to receive(:button_down?).with(Gosu::KbLeft).and_return(false)
+        expect(rover).to_not receive(:turn_left)
+        rover.update
+      end
     end
   end
 end
