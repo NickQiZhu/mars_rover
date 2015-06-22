@@ -23,14 +23,20 @@ class Rover < VisualElement
   end
 
   def move
-    MOVEMENT_FRAMES.times {
+    MOVEMENT_STEPS.times {
       @game.cmd_queue << MoveCommand.new(self, 0, MOVEMENT_STEP_SIZE)
+    }
+  end
+
+  def turn_left
+    MOVEMENT_STEPS.times {
+      @game.cmd_queue << TurnCommand.new(self, -33)
     }
   end
 
   def update
     if Gosu::button_down?(Gosu::KbUp)
-          move
-        end
+      move
+    end
   end
 end

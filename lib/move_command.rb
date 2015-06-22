@@ -1,8 +1,10 @@
-class MoveCommand
+require_relative 'base_command'
+
+class MoveCommand < BaseCommand
   attr_accessor :x, :y
 
   def initialize(rover, x, y)
-    @rover = rover
+    super rover
     @x = x
     @y = y
   end
@@ -12,6 +14,7 @@ class MoveCommand
   end
 
   def ==(cmd)
-    x == cmd.x && y == cmd.y
+    same_command?(cmd) && x == cmd.x && y == cmd.y
   end
+
 end
