@@ -1,7 +1,7 @@
 require 'spec_helper.rb'
 
 describe MoveCommand do
-  let(:rover) { instance_double(Rover, x: 10, y: 10, angle: 0) }
+  let(:rover) { instance_double(Rover, x_pos: 10, y_pos: 10, angle: 0) }
   subject(:cmd) { MoveCommand.new(rover) }
 
   describe '#execute' do

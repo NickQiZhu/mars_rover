@@ -6,23 +6,23 @@ require_relative 'right_turn_command'
 class Rover < VisualElement
   Z_INDEX = 1
 
-  attr_reader :x, :y, :angle
+  attr_reader :x_pos, :y_pos, :angle
 
   def initialize(game)
     super game
-    @x = 320
-    @y = 240
+    @x_pos = 320
+    @y_pos = 240
     @angle = 0
     @image = Gosu::Image.new('media/rover.bmp')
   end
 
   def position(x, y)
-    @x = x
-    @y = y
+    @x_pos = x
+    @y_pos = y
   end
 
   def draw
-    image.draw_rot(@x, @y, Z_INDEX, @angle)
+    image.draw_rot(x_pos, y_pos, Z_INDEX, @angle)
   end
 
   def move
@@ -48,16 +48,10 @@ class Rover < VisualElement
   end
 
   def update
-    if Gosu::button_down?(Gosu::KbUp)
-      move
-    end
+    move if Gosu::button_down?(Gosu::KbUp)
 
-    if Gosu::button_down?(Gosu::KbLeft)
-      turn_left
-    end
+    turn_left if Gosu::button_down?(Gosu::KbLeft)
 
-    if Gosu::button_down?(Gosu::KbRight)
-      turn_right
-    end
+    turn_right if Gosu::button_down?(Gosu::KbRight)
   end
 end

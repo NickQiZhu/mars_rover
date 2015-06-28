@@ -8,8 +8,8 @@ class MoveCommand < BaseCommand
   end
 
   def execute
-    x = rover.x - Gosu::offset_x(rover.angle, STEP_SIZE)
-    y = rover.y - Gosu::offset_y(rover.angle, STEP_SIZE)
+    x = rover.x_pos - Gosu::offset_x(rover.angle, STEP_SIZE)
+    y = rover.y_pos - Gosu::offset_y(rover.angle, STEP_SIZE)
 
     rover.position(x, y)
   end

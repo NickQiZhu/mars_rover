@@ -6,8 +6,8 @@ describe Rover do
 
   describe '#initialize' do
     it 'should set initial position' do
-      expect(rover.x).to be >= 0
-      expect(rover.y).to be >= 0
+      expect(rover.x_pos).to be >= 0
+      expect(rover.y_pos).to be >= 0
     end
 
     it 'should load image' do
@@ -19,8 +19,8 @@ describe Rover do
     it 'should set x, y directly' do
       x = 10; y = 15
       rover.position x, y
-      expect(rover.x).to eq(x)
-      expect(rover.y).to eq(y)
+      expect(rover.x_pos).to eq(x)
+      expect(rover.y_pos).to eq(y)
     end
   end
 
