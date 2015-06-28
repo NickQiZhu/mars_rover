@@ -26,21 +26,15 @@ class Rover < VisualElement
   end
 
   def move
-    BaseCommand::STEPS.times {
-      @game.cmd_queue << MoveCommand.new(self)
-    }
+    BaseCommand.enqueue(@game.cmd_queue) { MoveCommand.new(self) }
   end
 
   def turn_left
-    BaseCommand::STEPS.times {
-      @game.cmd_queue << LeftTurnCommand.new(self)
-    }
+    BaseCommand.enqueue(@game.cmd_queue) { LeftTurnCommand.new(self) }
   end
 
   def turn_right
-    BaseCommand::STEPS.times {
-      @game.cmd_queue << RightTurnCommand.new(self)
-    }
+    BaseCommand.enqueue(@game.cmd_queue) { RightTurnCommand.new(self) }
   end
 
   def turn(degree)

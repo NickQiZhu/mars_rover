@@ -5,6 +5,10 @@ class BaseCommand
 
   attr_reader :rover
 
+  def self.enqueue(queue)
+    STEPS.times { queue << yield if block_given? }
+  end
+
   def initialize(rover)
     @rover = rover
   end
