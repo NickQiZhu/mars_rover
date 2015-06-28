@@ -33,10 +33,18 @@ describe Rover do
   end
 
   describe '#turn_left' do
-    it 'should generate a series of turn command' do
+    it 'should generate a series of left turn command' do
       rover.turn_left
       expect(game.cmd_queue.size).to eq(TurnCommand::STEPS)
       game.cmd_queue.each { |cmd| expect(cmd).to eq(LeftTurnCommand.new(rover)) }
+    end
+  end
+
+  describe '#turn_right' do
+    it 'should generate a series of right turn command' do
+      rover.turn_right
+      expect(game.cmd_queue.size).to eq(TurnCommand::STEPS)
+      game.cmd_queue.each { |cmd| expect(cmd).to eq(RightTurnCommand.new(rover)) }
     end
   end
 
@@ -92,6 +100,20 @@ describe Rover do
       it 'should not be triggered if left button is not pressed' do
         expect(Gosu).to receive(:button_down?).with(Gosu::KbLeft).and_return(false)
         expect(rover).to_not receive(:turn_left)
+        rover.update
+      end
+    end
+
+    context 'turn right' do
+      it 'should be triggered if right button is pressed' do
+        expect(Gosu).to receive(:button_down?).with(Gosu::KbRight).and_return(true)
+        expect(rover).to receive(:turn_right)
+        rover.update
+      end
+
+      it 'should not be triggered if right button is not pressed' do
+        expect(Gosu).to receive(:button_down?).with(Gosu::KbRight).and_return(false)
+        expect(rover).to_not receive(:turn_right)
         rover.update
       end
     end

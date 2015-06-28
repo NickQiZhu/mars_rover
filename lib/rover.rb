@@ -1,6 +1,7 @@
 require_relative 'visual_element'
 require_relative 'move_command'
 require_relative 'left_turn_command'
+require_relative 'right_turn_command'
 
 class Rover < VisualElement
   Z_INDEX = 1
@@ -36,6 +37,12 @@ class Rover < VisualElement
     }
   end
 
+  def turn_right
+    BaseCommand::STEPS.times {
+      @game.cmd_queue << RightTurnCommand.new(self)
+    }
+  end
+
   def turn(degree)
     @angle += degree
   end
@@ -47,6 +54,10 @@ class Rover < VisualElement
 
     if Gosu::button_down?(Gosu::KbLeft)
       turn_left
+    end
+
+    if Gosu::button_down?(Gosu::KbRight)
+      turn_right
     end
   end
 end
