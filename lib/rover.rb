@@ -22,6 +22,8 @@ class Rover < VisualElement
   end
 
   def draw
+    execute_command
+
     image.draw_rot(x_pos, y_pos, Z_INDEX, @angle)
   end
 
@@ -47,5 +49,17 @@ class Rover < VisualElement
     turn_left if Gosu::button_down?(Gosu::KbLeft)
 
     turn_right if Gosu::button_down?(Gosu::KbRight)
+  end
+
+  private
+
+  def execute_command
+    unless @action_queue.empty?
+      dequeue_command.execute
+    end
+  end
+
+  def dequeue_command
+    @action_queue.slice!(0)
   end
 end

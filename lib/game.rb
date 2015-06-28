@@ -25,7 +25,6 @@ class Game < Gosu::Window
   end
 
   def draw
-    execute_command
     redraw_all_elements
   end
 
@@ -38,16 +37,6 @@ class Game < Gosu::Window
   end
 
   private
-
-  def execute_command
-    unless @cmd_queue.empty?
-      dequeue_command.execute
-    end
-  end
-
-  def dequeue_command
-    @cmd_queue.slice!(0)
-  end
 
   def redraw_all_elements
     @elements.each { |e| e.draw }

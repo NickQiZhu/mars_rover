@@ -67,8 +67,28 @@ describe Rover do
     let(:x) { 11 }; let(:y) { 12 }; let(:angle) { 33 }
 
     before(:each) do
+      allow(rover.image).to receive(:draw_rot)
       rover.position x, y
       rover.turn(angle)
+    end
+
+    context 'command execution routine' do
+      let(:cmd) { instance_double(MoveCommand) }
+
+      before(:each) do
+        expect(cmd).to receive(:execute)
+        rover.action_queue << cmd
+      end
+
+      it 'should execute first queued commands' do
+        rover.action_queue << instance_double(MoveCommand)
+        rover.draw
+      end
+
+      it 'should consume queued command after execution' do
+        rover.draw
+        expect(rover.action_queue).to be_empty
+      end
     end
 
     it 'should draw image' do
