@@ -1,20 +1,21 @@
 require_relative 'base_command'
 
 class MoveCommand < BaseCommand
-  attr_accessor :x, :y
+  STEP_SIZE = -3
 
-  def initialize(rover, x, y)
+  def initialize(rover)
     super rover
-    @x = x
-    @y = y
   end
 
   def execute
-    @rover.position(@rover.x + x, @rover.y + y)
+    x = rover.x - Gosu::offset_x(rover.angle, STEP_SIZE)
+    y = rover.y - Gosu::offset_y(rover.angle, STEP_SIZE)
+
+    rover.position(x, y)
   end
 
   def ==(cmd)
-    same_command?(cmd) && x == cmd.x && y == cmd.y
+    same_command?(cmd)
   end
 
 end

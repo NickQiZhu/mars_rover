@@ -26,7 +26,7 @@ class Rover < VisualElement
 
   def move
     MOVEMENT_STEPS.times {
-      @game.cmd_queue << MoveCommand.new(self, 0, MOVEMENT_STEP_SIZE)
+      @game.cmd_queue << MoveCommand.new(self)
     }
   end
 

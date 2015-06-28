@@ -28,7 +28,7 @@ describe Rover do
     it 'should enqueue a series of position command' do
       rover.move
       expect(game.cmd_queue.size).to eq(Rover::MOVEMENT_STEPS)
-      game.cmd_queue.each { |cmd| expect(cmd).to eq(MoveCommand.new(rover, 0, Rover::MOVEMENT_STEP_SIZE)) }
+      game.cmd_queue.each { |cmd| expect(cmd).to eq(MoveCommand.new(rover)) }
     end
   end
 

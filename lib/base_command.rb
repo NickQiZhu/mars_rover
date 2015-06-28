@@ -1,4 +1,6 @@
 class BaseCommand
+  attr_reader :rover
+
   def initialize(rover)
     @rover = rover
   end
