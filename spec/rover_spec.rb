@@ -16,11 +16,19 @@ describe Rover do
   end
 
   describe '#position' do
-    it 'should set x, y directly' do
-      x = 10; y = 15
-      rover.position x, y
+    let(:x) { 10 }; let(:y) { 15 }; let(:angle) { 4 }
+
+    it 'should set x, y, angle directly' do
+      rover.position x, y, angle
       expect(rover.x_pos).to eq(x)
       expect(rover.y_pos).to eq(y)
+      expect(rover.angle).to eq(angle)
+    end
+
+    it 'should ignore angle if not given' do
+      rover.position x, y, angle
+      rover.position 1, 1
+      expect(rover.angle).to eq(angle)
     end
   end
 
@@ -56,9 +64,7 @@ describe Rover do
   end
 
   describe '#draw' do
-    let(:x) { 11 }
-    let(:y) { 12 }
-    let(:angle) { 33 }
+    let(:x) { 11 }; let(:y) { 12 }; let(:angle) { 33 }
 
     before(:each) do
       rover.position x, y

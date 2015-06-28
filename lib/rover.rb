@@ -10,15 +10,14 @@ class Rover < VisualElement
 
   def initialize(game)
     super game
-    @x_pos = 320
-    @y_pos = 240
-    @angle = 0
+    position 320, 240, 0
     @image = Gosu::Image.new('media/rover.bmp')
   end
 
-  def position(x, y)
+  def position(x, y, angle = nil)
     @x_pos = x
     @y_pos = y
+    @angle = angle if angle
   end
 
   def draw
