@@ -36,6 +36,10 @@ class Game < Gosu::Window
     close
   end
 
+  def button_down(id)
+    shutdown if id == Gosu::KbEscape
+  end
+
   private
 
   def redraw_all_elements

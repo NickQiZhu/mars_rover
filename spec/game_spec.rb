@@ -59,4 +59,11 @@ describe Game do
       game.update
     end
   end
+
+  describe '#button_down' do
+    it 'should shutdown the game is esc is pressed' do
+      expect(game).to receive(:shutdown)
+      game.button_down(Gosu::KbEscape)
+    end
+  end
 end
