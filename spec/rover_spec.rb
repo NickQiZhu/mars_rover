@@ -35,24 +35,24 @@ describe Rover do
   describe '#move' do
     it 'should enqueue a series of position command' do
       rover.move
-      expect(rover.action_queue.size).to eq(MoveCommand::STEPS)
-      rover.action_queue.each { |cmd| expect(cmd).to eq(MoveCommand.new(rover)) }
+      expect(rover.action_queue.size).to eq(MoveAction::STEPS)
+      rover.action_queue.each { |cmd| expect(cmd).to eq(MoveAction.new(rover)) }
     end
   end
 
   describe '#turn_left' do
     it 'should generate a series of left turn command' do
       rover.turn_left
-      expect(rover.action_queue.size).to eq(TurnCommand::STEPS)
-      rover.action_queue.each { |cmd| expect(cmd).to eq(LeftTurnCommand.new(rover)) }
+      expect(rover.action_queue.size).to eq(TurnAction::STEPS)
+      rover.action_queue.each { |cmd| expect(cmd).to eq(LeftTurnAction.new(rover)) }
     end
   end
 
   describe '#turn_right' do
     it 'should generate a series of right turn command' do
       rover.turn_right
-      expect(rover.action_queue.size).to eq(TurnCommand::STEPS)
-      rover.action_queue.each { |cmd| expect(cmd).to eq(RightTurnCommand.new(rover)) }
+      expect(rover.action_queue.size).to eq(TurnAction::STEPS)
+      rover.action_queue.each { |cmd| expect(cmd).to eq(RightTurnAction.new(rover)) }
     end
   end
 
@@ -73,15 +73,15 @@ describe Rover do
     end
 
     context 'command execution routine' do
-      let(:cmd) { instance_double(MoveCommand) }
+      let(:action) { instance_double(MoveAction) }
 
       before(:each) do
-        expect(cmd).to receive(:execute)
-        rover.action_queue << cmd
+        expect(action).to receive(:execute)
+        rover.action_queue << action
       end
 
       it 'should execute first queued commands' do
-        rover.action_queue << instance_double(MoveCommand)
+        rover.action_queue << instance_double(MoveAction)
         rover.draw
       end
 

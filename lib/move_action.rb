@@ -1,6 +1,6 @@
-require_relative 'base_command'
+require_relative 'base_action'
 
-class MoveCommand < BaseCommand
+class MoveAction < BaseAction
   STEP_SIZE = -2
 
   def initialize(rover)
@@ -14,8 +14,8 @@ class MoveCommand < BaseCommand
     rover.position(x, y)
   end
 
-  def ==(cmd)
-    same_command?(cmd)
+  def ==(action)
+    same_command?(action)
   end
 
 end

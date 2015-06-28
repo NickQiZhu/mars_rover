@@ -1,7 +1,7 @@
 require_relative 'visual_element'
-require_relative 'move_command'
-require_relative 'left_turn_command'
-require_relative 'right_turn_command'
+require_relative 'move_action'
+require_relative 'left_turn_action'
+require_relative 'right_turn_action'
 
 class Rover < VisualElement
   Z_INDEX = 1
@@ -20,15 +20,15 @@ class Rover < VisualElement
   end
 
   def move
-    BaseCommand.enqueue(@action_queue) { MoveCommand.new(self) }
+    BaseAction.enqueue(@action_queue) { MoveAction.new(self) }
   end
 
   def turn_left
-    BaseCommand.enqueue(@action_queue) { LeftTurnCommand.new(self) }
+    BaseAction.enqueue(@action_queue) { LeftTurnAction.new(self) }
   end
 
   def turn_right
-    BaseCommand.enqueue(@action_queue) { RightTurnCommand.new(self) }
+    BaseAction.enqueue(@action_queue) { RightTurnAction.new(self) }
   end
 
   def turn(degree)

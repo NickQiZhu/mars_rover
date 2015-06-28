@@ -1,12 +1,12 @@
 require 'spec_helper.rb'
 
-describe LeftTurnCommand do
+describe LeftTurnAction do
   let(:rover) { instance_double(Rover) }
-  subject(:cmd) { LeftTurnCommand.new(rover) }
+  subject(:action) { LeftTurnAction.new(rover) }
 
   describe '#initialize' do
     it 'should change angle -4.5 degrees' do
-      expect(cmd.degree).to eq(-TurnCommand::TURN_ANGLE)
+      expect(action.degree).to eq(-TurnAction::TURN_ANGLE)
     end
   end
 end

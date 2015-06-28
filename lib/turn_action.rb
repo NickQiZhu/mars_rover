@@ -1,6 +1,6 @@
-require_relative 'base_command'
+require_relative 'base_action'
 
-class TurnCommand < BaseCommand
+class TurnAction < BaseAction
 
   TURN_ANGLE = 2
 
@@ -15,8 +15,8 @@ class TurnCommand < BaseCommand
     @rover.turn(@degree)
   end
 
-  def ==(cmd)
-    same_command?(cmd) && degree == cmd.degree
+  def ==(action)
+    same_command?(action) && degree == action.degree
   end
 
 end

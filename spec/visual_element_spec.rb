@@ -4,15 +4,15 @@ describe VisualElement do
 
   describe '#draw' do
     let(:element) { VisualElement.new(instance_double(Game)) }
-    let(:cmd) { instance_double(MoveCommand) }
+    let(:action) { instance_double(MoveAction) }
 
     before(:each) do
-      expect(cmd).to receive(:execute)
-      element.action_queue << cmd
+      expect(action).to receive(:execute)
+      element.action_queue << action
     end
 
     it 'should execute first queued commands' do
-      element.action_queue << instance_double(MoveCommand)
+      element.action_queue << instance_double(MoveAction)
       element.draw
     end
 
