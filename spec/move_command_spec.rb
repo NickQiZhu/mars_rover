@@ -6,7 +6,7 @@ describe MoveCommand do
 
   describe '#execute' do
     it 'should move rover to new position' do
-      expect(rover).to receive(:position).with(10, 7)
+      expect(rover).to receive(:position).with(10, 8)
       cmd.execute
     end
   end

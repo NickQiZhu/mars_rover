@@ -1,7 +1,7 @@
 require 'gosu'
 
 class BaseCommand
-  STEPS = 1
+  STEPS = 2
 
   attr_reader :rover
 

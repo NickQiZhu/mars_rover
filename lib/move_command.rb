@@ -1,7 +1,7 @@
 require_relative 'base_command'
 
 class MoveCommand < BaseCommand
-  STEP_SIZE = -3
+  STEP_SIZE = -2
 
   def initialize(rover)
     super rover

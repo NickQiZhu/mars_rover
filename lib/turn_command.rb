@@ -2,7 +2,7 @@ require_relative 'base_command'
 
 class TurnCommand < BaseCommand
 
-  TURN_ANGLE = 4.5
+  TURN_ANGLE = 2
 
   attr_accessor :degree
 
