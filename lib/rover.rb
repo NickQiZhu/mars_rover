@@ -6,11 +6,12 @@ require_relative 'right_turn_command'
 class Rover < VisualElement
   Z_INDEX = 1
 
-  attr_reader :x_pos, :y_pos, :angle
+  attr_reader :x_pos, :y_pos, :angle, :action_queue
 
   def initialize(game)
     super game
     position 320, 240, 0
+    @action_queue = []
     @image = Gosu::Image.new('media/rover.bmp')
   end
 
@@ -25,15 +26,15 @@ class Rover < VisualElement
   end
 
   def move
-    BaseCommand.enqueue(@game.cmd_queue) { MoveCommand.new(self) }
+    BaseCommand.enqueue(@action_queue) { MoveCommand.new(self) }
   end
 
   def turn_left
-    BaseCommand.enqueue(@game.cmd_queue) { LeftTurnCommand.new(self) }
+    BaseCommand.enqueue(@action_queue) { LeftTurnCommand.new(self) }
   end
 
   def turn_right
-    BaseCommand.enqueue(@game.cmd_queue) { RightTurnCommand.new(self) }
+    BaseCommand.enqueue(@action_queue) { RightTurnCommand.new(self) }
   end
 
   def turn(degree)

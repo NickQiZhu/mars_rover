@@ -35,24 +35,24 @@ describe Rover do
   describe '#move' do
     it 'should enqueue a series of position command' do
       rover.move
-      expect(game.cmd_queue.size).to eq(MoveCommand::STEPS)
-      game.cmd_queue.each { |cmd| expect(cmd).to eq(MoveCommand.new(rover)) }
+      expect(rover.action_queue.size).to eq(MoveCommand::STEPS)
+      rover.action_queue.each { |cmd| expect(cmd).to eq(MoveCommand.new(rover)) }
     end
   end
 
   describe '#turn_left' do
     it 'should generate a series of left turn command' do
       rover.turn_left
-      expect(game.cmd_queue.size).to eq(TurnCommand::STEPS)
-      game.cmd_queue.each { |cmd| expect(cmd).to eq(LeftTurnCommand.new(rover)) }
+      expect(rover.action_queue.size).to eq(TurnCommand::STEPS)
+      rover.action_queue.each { |cmd| expect(cmd).to eq(LeftTurnCommand.new(rover)) }
     end
   end
 
   describe '#turn_right' do
     it 'should generate a series of right turn command' do
       rover.turn_right
-      expect(game.cmd_queue.size).to eq(TurnCommand::STEPS)
-      game.cmd_queue.each { |cmd| expect(cmd).to eq(RightTurnCommand.new(rover)) }
+      expect(rover.action_queue.size).to eq(TurnCommand::STEPS)
+      rover.action_queue.each { |cmd| expect(cmd).to eq(RightTurnCommand.new(rover)) }
     end
   end
 
