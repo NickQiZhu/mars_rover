@@ -1,6 +1,6 @@
 require_relative 'visual_element'
 require_relative 'move_command'
-require_relative 'turn_command'
+require_relative 'left_turn_command'
 
 class Rover < VisualElement
   Z_INDEX = 1
@@ -25,14 +25,14 @@ class Rover < VisualElement
   end
 
   def move
-    MOVEMENT_STEPS.times {
+    BaseCommand::STEPS.times {
       @game.cmd_queue << MoveCommand.new(self)
     }
   end
 
   def turn_left
-    MOVEMENT_STEPS.times {
-      @game.cmd_queue << TurnCommand.new(self, -4)
+    BaseCommand::STEPS.times {
+      @game.cmd_queue << LeftTurnCommand.new(self)
     }
   end
 

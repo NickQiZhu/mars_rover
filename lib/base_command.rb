@@ -1,4 +1,8 @@
+require 'gosu'
+
 class BaseCommand
+  STEPS = 1
+
   attr_reader :rover
 
   def initialize(rover)

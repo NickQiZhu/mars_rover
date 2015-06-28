@@ -2,6 +2,8 @@ require_relative 'base_command'
 
 class TurnCommand < BaseCommand
 
+  TURN_ANGLE = 4.5
+
   attr_accessor :degree
 
   def initialize(rover, degree)
