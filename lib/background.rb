@@ -12,7 +12,7 @@ class Background < VisualElement
     image_width = @image.width
     image_height = @image.height
 
-    if image_width > @game.width && image_height > @game.height
+    if image_width >= @game.width && image_height >= @game.height
       @image.draw(0, 0, z_index)
     else
       repeat_y = @game.height / image_height
