@@ -12,8 +12,8 @@ class Background < VisualElement
     if no_tiling_required?(image_height, image_width)
       @image.draw(0, 0, z_index)
     else
-      repeat_y = @game.height / image_height
-      repeat_x = @game.width / image_width
+      repeat_y = (@game.height.to_f / image_height).ceil
+      repeat_x = (@game.width.to_f / image_width).ceil
 
       repeat_y.times do |y_offset|
         repeat_x.times do |x_offset|
