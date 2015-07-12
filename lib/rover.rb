@@ -11,7 +11,7 @@ class Rover < VisualElement
 
   def initialize(game)
     super game
-    position 320, 240, 0
+    set_position 320, 240, 0
   end
 
   def z_index
@@ -28,10 +28,6 @@ class Rover < VisualElement
 
   def turn_right
     BaseAction.enqueue(@action_queue) { RightTurnAction.new(self) }
-  end
-
-  def turn(degree)
-    @angle += degree
   end
 
   def update

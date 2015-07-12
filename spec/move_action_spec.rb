@@ -6,7 +6,7 @@ describe MoveAction do
 
   describe '#execute' do
     it 'should move rover to new position' do
-      expect(rover).to receive(:position).with(10, 8)
+      expect(rover).to receive(:set_position).with(10, 8)
       action.execute
     end
   end
