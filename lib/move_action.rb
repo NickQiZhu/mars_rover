@@ -14,8 +14,4 @@ class MoveAction < BaseAction
     rover.position(x, y)
   end
 
-  def ==(action)
-    same_command?(action)
-  end
-
 end

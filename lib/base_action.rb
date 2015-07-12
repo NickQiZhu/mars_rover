@@ -13,6 +13,10 @@ class BaseAction
     @rover = rover
   end
 
+  def ==(action)
+    same_command?(action)
+  end
+
   def same_command?(cmd)
     cmd.class == self.class
   end

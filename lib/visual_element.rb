@@ -10,7 +10,6 @@ class VisualElement
 
   def draw
     execute_command
-
     draw_image
   end
 
