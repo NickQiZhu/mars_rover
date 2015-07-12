@@ -11,32 +11,29 @@ describe Background do
   end
 
   describe '#draw' do
-    let(:image) { instance_double(Gosu::Image) }
-
-    before(:each) do
-      background.image = image
-    end
-
     it 'should draw background image if image is larger than game size' do
-      expect(image).to receive(:width).and_return(11)
-      expect(image).to receive(:height).and_return(10)
-      expect(image).to receive(:draw).with(0, 0, background.z_index)
+      expect_draw(mock_image(10, 11), 0, 0)
       background.draw
     end
 
     it 'should draw background image in tiles if image is small in both width and height' do
-      expect(image).to receive(:width).and_return(3)
-      expect(image).to receive(:height).and_return(3)
-      expect(image).to receive(:draw).with(0, 0, background.z_index)
-      expect(image).to receive(:draw).with(3, 0, background.z_index)
-      expect(image).to receive(:draw).with(6, 0, background.z_index)
-      expect(image).to receive(:draw).with(0, 3, background.z_index)
-      expect(image).to receive(:draw).with(3, 3, background.z_index)
-      expect(image).to receive(:draw).with(6, 3, background.z_index)
-      expect(image).to receive(:draw).with(0, 6, background.z_index)
-      expect(image).to receive(:draw).with(3, 6, background.z_index)
-      expect(image).to receive(:draw).with(6, 6, background.z_index)
+      image = mock_image(3, 3)
+
+      [0, 3, 6].each do |y|
+        [0, 3, 6].each do |x|
+          expect_draw(image, x, y)
+        end
+      end
+
       background.draw
+    end
+
+    def expect_draw(image, x, y)
+      expect(image).to receive(:draw).with(x, y, background.z_index)
+    end
+
+    def mock_image(h, w)
+      background.image = instance_double(Gosu::Image, width: w, height: h)
     end
   end
 end
