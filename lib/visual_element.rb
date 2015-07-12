@@ -18,6 +18,10 @@ class VisualElement
     # abstract methods
   end
 
+  def pressed?(key)
+    Gosu::button_down?(key)
+  end
+
   protected
 
   def load_image

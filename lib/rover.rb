@@ -36,11 +36,11 @@ class Rover < VisualElement
   end
 
   def update
-    move if Gosu::button_down?(Gosu::KbUp)
+    move if pressed?(Gosu::KbUp)
 
-    turn_left if Gosu::button_down?(Gosu::KbLeft)
+    turn_left if pressed?(Gosu::KbLeft)
 
-    turn_right if Gosu::button_down?(Gosu::KbRight)
+    turn_right if pressed?(Gosu::KbRight)
   end
 
   protected
