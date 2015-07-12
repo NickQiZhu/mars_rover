@@ -5,13 +5,24 @@ class Background < VisualElement
   protected
 
   def load_image
-    @image = Gosu::Image.new('media/surface.png', :tileable => true)
+    @image = Gosu::Image.new('media/surface-texture.jpg', :tileable => true)
   end
 
   def draw_image
     image_width = @image.width
     image_height = @image.height
 
-    @image.draw(0, 0, z_index)
+    if image_width > @game.width && image_height > @game.height
+      @image.draw(0, 0, z_index)
+    else
+      repeat_y = @game.height / image_height
+      repeat_x = @game.width / image_width
+
+      repeat_y.times do |y_offset|
+        repeat_x.times do |x_offset|
+          @image.draw(x_offset * image_width, y_offset * image_height, z_index)
+        end
+      end
+    end
   end
 end

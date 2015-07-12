@@ -4,8 +4,8 @@ require_relative 'background'
 require_relative 'rover'
 
 class Game < Gosu::Window
-  DEFAULT_WIDTH = 640
-  DEFAULT_HEIGHT = 480
+  DEFAULT_WIDTH = 1024
+  DEFAULT_HEIGHT = 768
 
   attr_accessor :background_image, :rover, :cmd_queue, :elements
 

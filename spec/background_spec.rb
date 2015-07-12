@@ -1,7 +1,7 @@
 require 'spec_helper.rb'
 
 describe Background do
-  let(:game) { instance_double(Game, width: 10, height: 10) }
+  let(:game) { instance_double(Game, width: 9, height: 9) }
   subject(:background) { Background.new(game) }
 
   describe '#initialize' do
@@ -24,11 +24,18 @@ describe Background do
       background.draw
     end
 
-    xit 'should draw background image in tiles if image is small in both width and height' do
-      expect(image).to receive(:width).and_return(2)
-      expect(image).to receive(:height).and_return(2)
+    it 'should draw background image in tiles if image is small in both width and height' do
+      expect(image).to receive(:width).and_return(3)
+      expect(image).to receive(:height).and_return(3)
       expect(image).to receive(:draw).with(0, 0, background.z_index)
-      expect(image).to receive(:draw).with(0, 0, background.z_index)
+      expect(image).to receive(:draw).with(3, 0, background.z_index)
+      expect(image).to receive(:draw).with(6, 0, background.z_index)
+      expect(image).to receive(:draw).with(0, 3, background.z_index)
+      expect(image).to receive(:draw).with(3, 3, background.z_index)
+      expect(image).to receive(:draw).with(6, 3, background.z_index)
+      expect(image).to receive(:draw).with(0, 6, background.z_index)
+      expect(image).to receive(:draw).with(3, 6, background.z_index)
+      expect(image).to receive(:draw).with(6, 6, background.z_index)
       background.draw
     end
   end
