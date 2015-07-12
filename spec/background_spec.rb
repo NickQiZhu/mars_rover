@@ -1,6 +1,8 @@
 require 'spec_helper.rb'
 
 describe Background do
+  include ImageHelper
+
   GAME_WIDTH = 12
   GAME_HEIGHT = 15
 
@@ -18,7 +20,7 @@ describe Background do
      {w: 20, h: 15}, {w: 12, h: 20}].each do |size|
       it %{should draw image only once if image has
             size(#{size[:w]},#{size[:h]}) and game has size(#{GAME_WIDTH},#{GAME_HEIGHT})} do
-        expect_draw(mock_image(size[:w], size[:h]), 0, 0)
+        expect_draw(mock_image(size[:w], size[:h]), 0, 0, background.z_index)
         background.draw
       end
     end
@@ -28,19 +30,11 @@ describe Background do
 
       [0, 4, 8, 12].each do |y|
         [0, 5, 10].each do |x|
-          expect_draw(image, x, y)
+          expect_draw(image, x, y, background.z_index)
         end
       end
 
       background.draw
-    end
-
-    def expect_draw(image, x, y)
-      expect(image).to receive(:draw).with(x, y, background.z_index)
-    end
-
-    def mock_image(w, h)
-      background.image = instance_double(Gosu::Image, width: w, height: h)
     end
   end
 end
