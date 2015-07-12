@@ -1,12 +1,13 @@
 require_relative 'visual_element'
+require_relative 'positionable'
 require_relative 'move_action'
 require_relative 'left_turn_action'
 require_relative 'right_turn_action'
 
 class Rover < VisualElement
-  Z_INDEX = 1
+  include Positionable
 
-  attr_reader :x_pos, :y_pos, :angle
+  Z_INDEX = 1
 
   def initialize(game)
     super game
@@ -15,12 +16,6 @@ class Rover < VisualElement
 
   def z_index
     1
-  end
-
-  def position(x, y, angle = nil)
-    @x_pos = x
-    @y_pos = y
-    @angle = angle if angle
   end
 
   def move
