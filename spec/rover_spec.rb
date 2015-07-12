@@ -78,7 +78,7 @@ describe Rover do
       end
 
       it 'should draw image' do
-        expect(rover.image).to receive(:draw_rot).with(x, y, Rover::Z_INDEX, angle)
+        expect(rover.image).to receive(:draw_rot).with(x, y, rover.z_index, angle)
         rover.draw
       end
     end

@@ -1,7 +1,6 @@
 require_relative 'visual_element'
 
 class Background < VisualElement
-  Z_INDEX = 0
 
   protected
 
@@ -10,6 +9,9 @@ class Background < VisualElement
   end
 
   def draw_image
-    @image.draw(0, 0, Z_INDEX)
+    image_width = @image.width
+    image_height = @image.height
+
+    @image.draw(0, 0, z_index)
   end
 end

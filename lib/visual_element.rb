@@ -21,6 +21,10 @@ class VisualElement
     Gosu::button_down?(key)
   end
 
+  def z_index
+    0
+  end
+
   protected
 
   def load_image
