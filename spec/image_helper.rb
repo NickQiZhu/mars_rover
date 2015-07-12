@@ -4,6 +4,6 @@ module ImageHelper
   end
 
   def mock_image(w = 10, h = 10)
-    background.image = instance_double(Gosu::Image, width: w, height: h)
+    subject.image = instance_double(Gosu::Image, width: w, height: h)
   end
 end
