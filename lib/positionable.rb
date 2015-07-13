@@ -1,5 +1,3 @@
-require_relative 'position'
-
 module Positionable
   attr_reader :x_pos, :y_pos, :angle
 
@@ -11,9 +9,5 @@ module Positionable
 
   def turn(degree)
     @angle += degree
-  end
-
-  def position
-    Position.new(x_pos, y_pos, angle)
   end
 end

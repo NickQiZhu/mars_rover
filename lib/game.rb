@@ -1,6 +1,5 @@
 require 'gosu'
 
-require_relative 'position'
 require_relative 'background'
 require_relative 'rover'
 

@@ -42,28 +42,26 @@ describe Game do
     end
   end
 
-  describe '#draw' do
-    it 'should draw all elements' do
-      rovers = [instance_double(Rover), instance_double(Rover)]
-      game.elements += rovers
-      rovers.each { |rover| expect(rover).to receive(:draw) }
-      game.draw
-    end
-  end
+  context 'cascade method' do
+    let(:rovers) { [instance_double(Rover), instance_double(Rover)] }
 
-  describe '#update' do
-    let(:rover){instance_double(Rover)}
+    before(:each) { game.elements += rovers }
 
-    before(:each) do
-      game.elements << rover
+    describe '#draw' do
+      it 'should draw all elements' do
+        rovers.each { |rover| expect(rover).to receive(:draw) }
+        game.draw
+      end
     end
 
-    it 'should trigger #update on all visual elements' do
-      mouse_x = 10; mouse_y = 15
-      allow(game).to receive(:mouse_x).and_return(mouse_x)
-      allow(game).to receive(:mouse_y).and_return(mouse_y)
-      expect(rover).to receive(:update).with(mouse_x, mouse_y)
-      game.update
+    describe '#update' do
+      it 'should trigger #update on all visual elements' do
+        mouse_x = 10; mouse_y = 15
+        allow(game).to receive(:mouse_x).and_return(mouse_x)
+        allow(game).to receive(:mouse_y).and_return(mouse_y)
+        rovers.each { |rover| expect(rover).to receive(:update).with(mouse_x, mouse_y) }
+        game.update
+      end
     end
   end
 
