@@ -30,7 +30,7 @@ class Rover < VisualElement
     BaseAction.enqueue(@action_queue) { RightTurnAction.new(self) }
   end
 
-  def update
+  def update(mouse_x, mouse_y)
     move if pressed?(Gosu::KbUp)
 
     turn_left if pressed?(Gosu::KbLeft)

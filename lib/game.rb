@@ -1,5 +1,6 @@
 require 'gosu'
 
+require_relative 'position'
 require_relative 'background'
 require_relative 'rover'
 
@@ -47,6 +48,6 @@ class Game < Gosu::Window
   end
 
   def update_all_elements
-    @elements.each { |e| e.update }
+    @elements.each { |e| e.update(mouse_x, mouse_y) }
   end
 end

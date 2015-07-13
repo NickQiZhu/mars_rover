@@ -52,10 +52,17 @@ describe Game do
   end
 
   describe '#update' do
-    it 'should trigger #update on all visual elements' do
-      rover = instance_double(Rover)
+    let(:rover){instance_double(Rover)}
+
+    before(:each) do
       game.elements << rover
-      expect(rover).to receive(:update)
+    end
+
+    it 'should trigger #update on all visual elements' do
+      mouse_x = 10; mouse_y = 15
+      allow(game).to receive(:mouse_x).and_return(mouse_x)
+      allow(game).to receive(:mouse_y).and_return(mouse_y)
+      expect(rover).to receive(:update).with(mouse_x, mouse_y)
       game.update
     end
   end

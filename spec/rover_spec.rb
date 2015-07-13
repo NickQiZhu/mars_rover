@@ -40,7 +40,7 @@ describe Rover do
       it "should trigger #{test_case[:action_to_trigger]} if #{test_case[:key_pressed]} button is pressed" do
         expect(Gosu).to receive(:button_down?).with(test_case[:key_pressed]).and_return(true)
         expect(rover).to receive(test_case[:action_to_trigger])
-        rover.update
+        rover.update(0,0)
       end
     end
   end

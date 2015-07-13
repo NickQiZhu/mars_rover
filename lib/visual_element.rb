@@ -13,7 +13,7 @@ class VisualElement
     draw_image
   end
 
-  def update
+  def update(mouse_x, mouse_y)
     # abstract methods
   end
 
