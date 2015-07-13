@@ -8,6 +8,11 @@ class Mouse < VisualElement
     100
   end
 
+  def update(mouse_x, mouse_y)
+    self.x_pos = mouse_x
+    self.y_pos = mouse_y
+  end
+
   protected
 
   def load_image

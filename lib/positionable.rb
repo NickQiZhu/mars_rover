@@ -1,5 +1,5 @@
 module Positionable
-  attr_reader :x_pos, :y_pos, :angle
+  attr_accessor :x_pos, :y_pos, :angle
 
   def set_position(x, y, angle = nil)
     @x_pos = x
@@ -8,6 +8,6 @@ module Positionable
   end
 
   def turn(degree)
-    @angle += degree
+    self.angle += degree
   end
 end

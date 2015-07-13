@@ -20,4 +20,13 @@ describe Mouse do
       mouse.draw
     end
   end
+
+  describe '#update' do
+    it 'should set mouse position' do
+      x = 101; y = 204
+      mouse.update(x, y)
+      expect(mouse.x_pos).to eq(x)
+      expect(mouse.y_pos).to eq(y)
+    end
+  end
 end

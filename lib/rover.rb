@@ -45,7 +45,7 @@ class Rover < VisualElement
   end
 
   def draw_image
-    image.draw_rot(x_pos, y_pos, z_index, @angle)
+    image.draw_rot(x_pos, y_pos, z_index, angle)
   end
 
 end
