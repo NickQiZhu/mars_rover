@@ -17,7 +17,7 @@ describe Game do
   describe '#setup' do
     before(:each) { game.setup }
 
-    [Background, Rover].each do |element_class|
+    [Background, Rover, Mouse].each do |element_class|
       it "should set #{element_class} element" do
         has_element_by_class?(game, element_class)
       end

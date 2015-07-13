@@ -2,6 +2,7 @@ require 'gosu'
 
 require_relative 'background'
 require_relative 'rover'
+require_relative 'mouse'
 
 class Game < Gosu::Window
   DEFAULT_WIDTH = 1024
@@ -17,7 +18,7 @@ class Game < Gosu::Window
   end
 
   def setup
-    @elements << Background.new(self) << Rover.new(self)
+    @elements << Background.new(self) << Rover.new(self) << Mouse.new(self)
   end
 
   def start
