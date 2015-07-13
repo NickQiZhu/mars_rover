@@ -1,7 +1,7 @@
 require 'spec_helper.rb'
 
 describe MoveAction do
-  let(:rover) { instance_double(Rover, x_pos: 10, y_pos: 10, angle: 0) }
+  let(:rover) { instance_double(Tank, x_pos: 10, y_pos: 10, angle: 0) }
   subject(:action) { MoveAction.new(rover) }
 
   describe '#execute' do

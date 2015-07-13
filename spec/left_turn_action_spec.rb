@@ -1,7 +1,7 @@
 require 'spec_helper.rb'
 
 describe LeftTurnAction do
-  let(:rover) { instance_double(Rover) }
+  let(:rover) { instance_double(Tank) }
   subject(:action) { LeftTurnAction.new(rover) }
 
   describe '#initialize' do

@@ -1,7 +1,7 @@
 require 'gosu'
 
 require_relative 'background'
-require_relative 'rover'
+require_relative 'tank'
 require_relative 'mouse'
 
 class Game < Gosu::Window
@@ -18,7 +18,7 @@ class Game < Gosu::Window
   end
 
   def setup
-    @elements << Background.new(self) << Rover.new(self) << Mouse.new(self)
+    @elements << Background.new(self) << Tank.new(self) << Mouse.new(self)
   end
 
   def start

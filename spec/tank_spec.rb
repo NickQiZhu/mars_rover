@@ -1,8 +1,8 @@
 require 'spec_helper.rb'
 
-describe Rover do
+describe Tank do
   let(:game) { Game.new }
-  subject(:rover) { Rover.new(game) }
+  subject(:rover) { Tank.new(game) }
 
   describe '#initialize' do
     it 'should set initial position' do

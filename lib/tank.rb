@@ -4,7 +4,7 @@ require_relative 'move_action'
 require_relative 'left_turn_action'
 require_relative 'right_turn_action'
 
-class Rover < VisualElement
+class Tank < VisualElement
   include Positionable
 
   Z_INDEX = 1
@@ -41,7 +41,7 @@ class Rover < VisualElement
   protected
 
   def load_image
-    @image = Gosu::Image.new('media/rover.bmp')
+    @image = Gosu::Image.new('media/tank.png')
   end
 
   def draw_image

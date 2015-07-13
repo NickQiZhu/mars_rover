@@ -17,7 +17,7 @@ describe Game do
   describe '#setup' do
     before(:each) { game.setup }
 
-    [Background, Rover, Mouse].each do |element_class|
+    [Background, Tank, Mouse].each do |element_class|
       it "should set #{element_class} element" do
         has_element_by_class?(game, element_class)
       end
@@ -43,7 +43,7 @@ describe Game do
   end
 
   context 'cascade method' do
-    let(:rovers) { [instance_double(Rover), instance_double(Rover)] }
+    let(:rovers) { [instance_double(Tank), instance_double(Tank)] }
 
     before(:each) { game.elements += rovers }
 
