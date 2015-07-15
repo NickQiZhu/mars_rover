@@ -12,7 +12,7 @@ class TurnAction < BaseAction
   end
 
   def execute
-    @rover.turn(@degree)
+    @element.turn(@degree)
   end
 
   def ==(action)

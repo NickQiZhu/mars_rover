@@ -8,10 +8,10 @@ class MoveAction < BaseAction
   end
 
   def execute
-    x = rover.x_pos - Gosu::offset_x(rover.angle, STEP_SIZE)
-    y = rover.y_pos - Gosu::offset_y(rover.angle, STEP_SIZE)
+    x = element.x_pos - Gosu::offset_x(element.angle, STEP_SIZE)
+    y = element.y_pos - Gosu::offset_y(element.angle, STEP_SIZE)
 
-    rover.set_position(x, y)
+    element.set_position(x, y)
   end
 
 end

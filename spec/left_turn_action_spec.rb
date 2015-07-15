@@ -1,8 +1,8 @@
 require 'spec_helper.rb'
 
 describe LeftTurnAction do
-  let(:rover) { instance_double(Tank) }
-  subject(:action) { LeftTurnAction.new(rover) }
+  let(:vehicle) { instance_double(Tank) }
+  subject(:action) { LeftTurnAction.new(vehicle) }
 
   describe '#initialize' do
     it 'should change angle -4.5 degrees' do
