@@ -1,8 +1,9 @@
 require 'spec_helper.rb'
 
 describe MoveAction do
+  let(:game) { instance_double(Game) }
   let(:vehicle) { instance_double(Tank, x_pos: 10, y_pos: 10, angle: 0) }
-  subject(:action) { MoveAction.new(vehicle) }
+  subject(:action) { MoveAction.new(game, vehicle) }
 
   describe '#execute' do
     it 'should move rover to new position' do

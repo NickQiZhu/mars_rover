@@ -3,8 +3,8 @@ require_relative 'base_action'
 class MoveAction < BaseAction
   STEP_SIZE = -2
 
-  def initialize(rover)
-    super rover
+  def initialize(game, rover)
+    super game, rover
   end
 
   def execute

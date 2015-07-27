@@ -23,7 +23,7 @@ describe Tank do
       it "#{test_case[:method]} should enqueue #{test_case[:action]} actions" do
         vehicle.send(test_case[:method])
         expect(vehicle.action_queue.size).to eq(MoveAction::STEPS)
-        vehicle.action_queue.each { |cmd| expect(cmd).to eq(test_case[:action].new(vehicle)) }
+        vehicle.action_queue.each { |cmd| expect(cmd).to eq(test_case[:action].new(game, vehicle)) }
       end
     end
   end

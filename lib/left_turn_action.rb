@@ -1,7 +1,7 @@
 require_relative 'turn_action'
 
 class LeftTurnAction < TurnAction
-  def initialize(rover)
-    super rover, -TURN_ANGLE
+  def initialize(game, rover)
+    super game, rover, -TURN_ANGLE
   end
 end

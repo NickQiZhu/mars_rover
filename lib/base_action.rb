@@ -3,14 +3,15 @@ require 'gosu'
 class BaseAction
   STEPS = 2
 
-  attr_reader :element
+  attr_reader :game, :element
 
   def self.enqueue(queue)
     STEPS.times { queue << yield if block_given? }
   end
 
-  def initialize(rover)
-    @element = rover
+  def initialize(game, element)
+    @game = game
+    @element = element
   end
 
   def ==(action)

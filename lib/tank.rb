@@ -19,15 +19,15 @@ class Tank < VisualElement
   end
 
   def move
-    BaseAction.enqueue(@action_queue) { MoveAction.new(self) }
+    BaseAction.enqueue(@action_queue) { MoveAction.new(game, self) }
   end
 
   def turn_left
-    BaseAction.enqueue(@action_queue) { LeftTurnAction.new(self) }
+    BaseAction.enqueue(@action_queue) { LeftTurnAction.new(game, self) }
   end
 
   def turn_right
-    BaseAction.enqueue(@action_queue) { RightTurnAction.new(self) }
+    BaseAction.enqueue(@action_queue) { RightTurnAction.new(game, self) }
   end
 
   def update(mouse_x, mouse_y)

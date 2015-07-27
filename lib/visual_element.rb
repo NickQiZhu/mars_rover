@@ -1,5 +1,6 @@
 class VisualElement
   attr_accessor :image, :action_queue
+  attr_reader :game
 
   def initialize(game)
     @game = game
