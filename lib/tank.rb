@@ -5,9 +5,12 @@ require_relative 'right_turn_action'
 require_relative 'fire_action'
 
 class Tank < VisualElement
+  FIRING_INTERVAL = 0.5
+
   def initialize(game)
     super game
     set_position 320, 240, 0
+    gun_ready!
   end
 
   def move
@@ -22,15 +25,22 @@ class Tank < VisualElement
     enqueue_action(RightTurnAction)
   end
 
+  def gun_ready?
+    Time.now - @fired_at >= FIRING_INTERVAL
+  end
+
   def fire
-    enqueue_action(FireAction)
+    if gun_ready?
+      @fired_at = Time.now
+      enqueue_action(FireAction)
+    end
   end
 
   def update(mouse_x, mouse_y)
     action_map = {Gosu::KbUp => :move,
-                      Gosu::KbLeft => :turn_left,
-                      Gosu::KbRight => :turn_right,
-                      Gosu::KbSpace => :fire}
+                  Gosu::KbLeft => :turn_left,
+                  Gosu::KbRight => :turn_right,
+                  Gosu::KbSpace => :fire}
 
     action_map.each_key do |key|
       action = action_map[key]
@@ -50,6 +60,12 @@ class Tank < VisualElement
 
   def load_image
     @image = Gosu::Image.new('media/tank.png')
+  end
+
+  private
+
+  def gun_ready!
+    @fired_at = Time.now - FIRING_INTERVAL
   end
 
 end

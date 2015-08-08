@@ -29,6 +29,22 @@ describe Tank do
     end
   end
 
+  describe '#gun_ready??' do
+    it 'should return true initially' do
+      expect(vehicle.gun_ready?).to be_truthy
+    end
+
+    it 'should return false right after firing' do
+      vehicle.fire
+      expect(vehicle.gun_ready?).to be_falsey
+    end
+
+    it 'consecutive firing should only fire once' do
+      3.times { vehicle.fire }
+      expect(vehicle.action_queue.size).to eq(1)
+    end
+  end
+
   describe '#update' do
     before(:each) do
       allow(Gosu).to receive(:button_down?).and_return(false)
@@ -42,7 +58,7 @@ describe Tank do
       it "should trigger #{test_case[:action_to_trigger]} if #{test_case[:key_pressed]} button is pressed" do
         expect(Gosu).to receive(:button_down?).with(test_case[:key_pressed]).and_return(true)
         expect(vehicle).to receive(test_case[:action_to_trigger])
-        vehicle.update(0,0)
+        vehicle.update(0, 0)
       end
     end
   end
