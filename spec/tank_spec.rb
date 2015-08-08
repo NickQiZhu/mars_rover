@@ -69,19 +69,6 @@ describe Tank do
         expect(vehicle.angle).to eq(angle)
       end
     end
-
-    describe '#draw' do
-      before(:each) do
-        allow(vehicle.image).to receive(:draw_rot)
-        vehicle.set_position x, y
-        vehicle.turn(angle)
-      end
-
-      it 'should draw image' do
-        expect(vehicle.image).to receive(:draw_rot).with(x, y, vehicle.z_index, angle)
-        vehicle.draw
-      end
-    end
   end
 
 end

@@ -1,12 +1,9 @@
 require_relative 'visual_element'
-require_relative 'positionable'
 require_relative 'move_action'
 require_relative 'left_turn_action'
 require_relative 'right_turn_action'
 
 class Tank < VisualElement
-  include Positionable
-
   Z_INDEX = 1
 
   def initialize(game)
@@ -42,10 +39,6 @@ class Tank < VisualElement
 
   def load_image
     @image = Gosu::Image.new('media/tank.png')
-  end
-
-  def draw_image
-    image.draw_rot(x_pos, y_pos, z_index, angle)
   end
 
 end

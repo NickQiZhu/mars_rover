@@ -1,10 +1,15 @@
+require_relative 'positionable'
+
 class VisualElement
   attr_accessor :image, :action_queue
   attr_reader :game
 
+  include Positionable
+
   def initialize(game)
     @game = game
     @action_queue = []
+    set_position 0, 0, 0
 
     load_image
   end
@@ -33,7 +38,7 @@ class VisualElement
   end
 
   def draw_image
-    # abstract methods
+    image.draw_rot(x_pos, y_pos, z_index, angle)
   end
 
   private
