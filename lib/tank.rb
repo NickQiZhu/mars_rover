@@ -27,12 +27,17 @@ class Tank < VisualElement
     BaseAction.enqueue(@action_queue) { RightTurnAction.new(game, self) }
   end
 
+  def fire
+
+  end
+
   def update(mouse_x, mouse_y)
-    move if pressed?(Gosu::KbUp)
+    key_action_map = {Gosu::KbUp => :move, Gosu::KbLeft => :turn_left, Gosu::KbRight => :turn_right, Gosu::KbSpace => :fire}
 
-    turn_left if pressed?(Gosu::KbLeft)
-
-    turn_right if pressed?(Gosu::KbRight)
+    key_action_map.each_key do |key|
+      action = key_action_map[key]
+      send(action) if pressed?(key)
+    end
   end
 
   protected

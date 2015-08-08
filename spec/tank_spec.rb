@@ -35,7 +35,8 @@ describe Tank do
 
     [{key_pressed: Gosu::KbUp, action_to_trigger: :move},
      {key_pressed: Gosu::KbLeft, action_to_trigger: :turn_left},
-     {key_pressed: Gosu::KbRight, action_to_trigger: :turn_right}
+     {key_pressed: Gosu::KbRight, action_to_trigger: :turn_right},
+     {key_pressed: Gosu::KbSpace, action_to_trigger: :fire}
     ].each do |test_case|
       it "should trigger #{test_case[:action_to_trigger]} if #{test_case[:key_pressed]} button is pressed" do
         expect(Gosu).to receive(:button_down?).with(test_case[:key_pressed]).and_return(true)
