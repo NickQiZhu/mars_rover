@@ -17,26 +17,29 @@ class Tank < VisualElement
   end
 
   def move
-    BaseAction.enqueue(@action_queue) { MoveAction.new(game, self) }
+    enqueue_action(MoveAction)
   end
 
   def turn_left
-    BaseAction.enqueue(@action_queue) { LeftTurnAction.new(game, self) }
+    enqueue_action(LeftTurnAction)
   end
 
   def turn_right
-    BaseAction.enqueue(@action_queue) { RightTurnAction.new(game, self) }
+    enqueue_action(RightTurnAction)
   end
 
   def fire
-    BaseAction.enqueue(@action_queue) { FireAction.new(game, self) }
+    enqueue_action(FireAction)
   end
 
   def update(mouse_x, mouse_y)
-    key_action_map = {Gosu::KbUp => :move, Gosu::KbLeft => :turn_left, Gosu::KbRight => :turn_right, Gosu::KbSpace => :fire}
+    action_map = {Gosu::KbUp => :move,
+                      Gosu::KbLeft => :turn_left,
+                      Gosu::KbRight => :turn_right,
+                      Gosu::KbSpace => :fire}
 
-    key_action_map.each_key do |key|
-      action = key_action_map[key]
+    action_map.each_key do |key|
+      action = action_map[key]
       send(action) if pressed?(key)
     end
   end
@@ -45,6 +48,12 @@ class Tank < VisualElement
 
   def load_image
     @image = Gosu::Image.new('media/tank.png')
+  end
+
+  private
+
+  def enqueue_action(action_class)
+    BaseAction.enqueue(@action_queue) { action_class.new(game, self) }
   end
 
 end
