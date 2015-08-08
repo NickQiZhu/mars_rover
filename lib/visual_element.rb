@@ -31,6 +31,14 @@ class VisualElement
     1
   end
 
+  def width
+    0
+  end
+
+  def height
+    0
+  end
+
   protected
 
   def load_image

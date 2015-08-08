@@ -5,8 +5,6 @@ require_relative 'right_turn_action'
 require_relative 'fire_action'
 
 class Tank < VisualElement
-  Z_INDEX = 1
-
   def initialize(game)
     super game
     set_position 320, 240, 0
@@ -38,6 +36,14 @@ class Tank < VisualElement
       action = action_map[key]
       send(action) if pressed?(key)
     end
+  end
+
+  def width
+    50
+  end
+
+  def height
+    50
   end
 
   protected
