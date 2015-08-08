@@ -8,7 +8,7 @@ class Game < Gosu::Window
   DEFAULT_WIDTH = 1024
   DEFAULT_HEIGHT = 768
 
-  attr_accessor :background_image, :rover, :cmd_queue, :elements
+  attr_reader :cmd_queue, :elements
 
   def initialize(width = DEFAULT_WIDTH, height = DEFAULT_HEIGHT)
     super width, height
