@@ -12,7 +12,7 @@ class Game < Gosu::Window
 
   def initialize(width = DEFAULT_WIDTH, height = DEFAULT_HEIGHT)
     super width, height
-    self.caption = 'Mars Rover'
+    self.caption = 'Tank War'
     @cmd_queue = []
     @elements = []
   end
