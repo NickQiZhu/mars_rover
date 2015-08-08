@@ -15,10 +15,11 @@ describe Tank do
     end
   end
 
-  describe 'movement method' do
+  describe 'action method' do
     [{method: :move, action: MoveAction},
      {method: :turn_left, action: LeftTurnAction},
-     {method: :turn_right, action: RightTurnAction}
+     {method: :turn_right, action: RightTurnAction},
+     {method: :fire, action: FireAction}
     ].each do |test_case|
       it "#{test_case[:method]} should enqueue #{test_case[:action]} actions" do
         vehicle.send(test_case[:method])
