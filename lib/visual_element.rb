@@ -28,7 +28,7 @@ class VisualElement
   end
 
   def z_index
-    0
+    1
   end
 
   protected

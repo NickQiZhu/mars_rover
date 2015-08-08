@@ -12,10 +12,6 @@ class Tank < VisualElement
     set_position 320, 240, 0
   end
 
-  def z_index
-    1
-  end
-
   def move
     enqueue_action(MoveAction)
   end

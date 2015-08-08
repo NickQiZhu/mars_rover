@@ -2,6 +2,10 @@ require_relative 'visual_element'
 
 class Background < VisualElement
 
+  def z_index
+    0
+  end
+
   protected
 
   def load_image
