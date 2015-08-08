@@ -1,7 +1,7 @@
 require 'gosu'
 
 class BaseAction
-  STEPS = 2
+  STEPS = 1
 
   attr_reader :game, :element
 

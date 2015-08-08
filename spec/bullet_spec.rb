@@ -11,4 +11,11 @@ describe Bullet do
       expect(bullet.image).to be_a(Gosu::Image)
     end
   end
+
+  describe '#update' do
+    it 'should enqueue move action' do
+      bullet.update(0, 0)
+      expect(bullet.action_queue.last).to be_a(MoveAction)
+    end
+  end
 end

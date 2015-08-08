@@ -52,10 +52,4 @@ class Tank < VisualElement
     @image = Gosu::Image.new('media/tank.png')
   end
 
-  private
-
-  def enqueue_action(action_class)
-    BaseAction.enqueue(@action_queue) { action_class.new(game, self) }
-  end
-
 end

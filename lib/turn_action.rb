@@ -2,7 +2,7 @@ require_relative 'base_action'
 
 class TurnAction < BaseAction
 
-  TURN_ANGLE = 2
+  TURN_ANGLE = 1
 
   attr_accessor :degree
 
