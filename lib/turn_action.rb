@@ -6,8 +6,8 @@ class TurnAction < BaseAction
 
   attr_accessor :degree
 
-  def initialize(game, rover, degree)
-    super game, rover
+  def initialize(game, vehicle, degree)
+    super game, vehicle
     @degree = degree
   end
 
