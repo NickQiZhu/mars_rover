@@ -11,6 +11,9 @@ class MoveAction < BaseAction
     x = element.x_pos - Gosu::offset_x(element.angle, STEP_SIZE)
     y = element.y_pos - Gosu::offset_y(element.angle, STEP_SIZE)
 
+    x = 0 if x < 0
+    y = 0 if y < 0
+
     element.set_position(x, y)
   end
 
