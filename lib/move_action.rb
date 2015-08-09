@@ -8,29 +8,26 @@ class MoveAction < BaseAction
   end
 
   def execute
-    x, y = move
-
-    x, y = enforce_boundaries(x, y)
+    x, y = move(element.x_pos, element.y_pos)
 
     element.set_position(x, y)
   end
 
   private
 
-  def move
-      x = element.x_pos - Gosu::offset_x(element.angle, STEP_SIZE)
-      y = element.y_pos - Gosu::offset_y(element.angle, STEP_SIZE)
+  def move(x, y)
+    x1 = x - Gosu::offset_x(element.angle, STEP_SIZE)
+    y1 = y - Gosu::offset_y(element.angle, STEP_SIZE)
+
+    if on_boundaries?(x1, y1)
       return x, y
+    else
+      return x1, y1
     end
+  end
 
-  def enforce_boundaries(x, y)
-    x = 0 if x < 0
-    y = 0 if y < 0
-
-    x = game.width if x > game.width
-    y = game.height if y > game.height
-
-    return x, y
+  def on_boundaries?(x1, y1)
+    x1 < 0 || y1 < 0 || x1 > game.width || y1 > game.height
   end
 
 end

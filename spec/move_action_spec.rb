@@ -14,12 +14,36 @@ describe MoveAction do
 
     it 'should not allow x & y to turn negative' do
       vehicle.set_position(1, 1, -40)
-      expect(vehicle).to receive(:set_position).with(0, 0)
+      expect(vehicle).to receive(:set_position).with(1, 1)
+      action.execute
+    end
+
+    it 'should not slide on y axis' do
+      vehicle.set_position(0, 1, -40)
+      expect(vehicle).to receive(:set_position).with(0, 1)
+      action.execute
+    end
+
+    it 'should not slide on x axis' do
+      vehicle.set_position(1, 0, -40)
+      expect(vehicle).to receive(:set_position).with(1, 0)
       action.execute
     end
 
     it 'should not allow x & y to be greater than the size of game window' do
       vehicle.set_position(game.width, game.height, 120)
+      expect(vehicle).to receive(:set_position).with(game.width, game.height)
+      action.execute
+    end
+
+    it 'should not slide on right border' do
+      vehicle.set_position(game.width, game.height, 80)
+      expect(vehicle).to receive(:set_position).with(game.width, game.height)
+      action.execute
+    end
+
+    it 'should not slide on south border' do
+      vehicle.set_position(game.width, game.height, 200)
       expect(vehicle).to receive(:set_position).with(game.width, game.height)
       action.execute
     end
