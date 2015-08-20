@@ -3,10 +3,6 @@ require_relative 'base_action'
 class MoveAction < BaseAction
   STEP_SIZE = -2
 
-  def initialize(game, vehicle)
-    super game, vehicle
-  end
-
   def execute
     x, y = move(element.x_pos, element.y_pos)
 

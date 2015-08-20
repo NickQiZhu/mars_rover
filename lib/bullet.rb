@@ -1,10 +1,15 @@
 require_relative 'visual_element'
 require_relative 'move_action'
+require_relative 'explode_action'
 
 class Bullet < VisualElement
 
   def update(mouse_x, mouse_y)
-    enqueue_action(MoveAction)
+    if moved?
+      enqueue_action(MoveAction)
+    else
+      enqueue_action(ExplodeAction)
+    end
   end
 
   protected
