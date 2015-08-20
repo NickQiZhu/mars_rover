@@ -2,8 +2,14 @@ require 'spec_helper.rb'
 
 describe VisualElement do
 
+  let(:element) { VisualElement.new(instance_double(Game)) }
+
+  it 'should set default size to 0x0' do
+    expect(element.width).to eq(0)
+    expect(element.height).to eq(0)
+  end
+
   describe '#draw' do
-    let(:element) { VisualElement.new(instance_double(Game)) }
     let(:action) { instance_double(MoveAction) }
 
     let(:x) { 10 }; let(:y) { 15 }; let(:angle) { 4 }
