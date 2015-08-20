@@ -8,7 +8,7 @@ class Game < Gosu::Window
   DEFAULT_WIDTH = 1024
   DEFAULT_HEIGHT = 768
 
-  attr_reader :cmd_queue, :elements
+  attr_reader :cmd_queue
 
   def initialize(width = DEFAULT_WIDTH, height = DEFAULT_HEIGHT)
     super width, height
@@ -41,13 +41,29 @@ class Game < Gosu::Window
     shutdown if id == Gosu::KbEscape
   end
 
+  def elements
+    @elements.dup
+  end
+
+  def add_element(e)
+    @elements << e
+  end
+
+  def remove_element(e)
+    @elements.delete e
+  end
+
+  def each_element(&block)
+    @elements.each &block
+  end
+
   private
 
   def redraw_all_elements
-    @elements.each { |e| e.draw }
+    each_element { |e| e.draw }
   end
 
   def update_all_elements
-    @elements.each { |e| e.update(mouse_x, mouse_y) }
+    each_element { |e| e.update(mouse_x, mouse_y) }
   end
 end

@@ -12,7 +12,7 @@ class FireAction < BaseAction
     x = element.x_pos + Gosu::offset_x(element.angle, element.width)
     y = element.y_pos + Gosu::offset_y(element.angle, element.height)
     bullet.set_position(x, y, element.angle)
-    game.elements << bullet
+    game.add_element bullet
   end
 
 end

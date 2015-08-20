@@ -45,7 +45,7 @@ describe Game do
   context 'cascade method' do
     let(:rovers) { [instance_double(Tank), instance_double(Tank)] }
 
-    before(:each) { rovers.each { |r| game.elements << r } }
+    before(:each) { rovers.each { |r| game.add_element r } }
 
     describe '#draw' do
       it 'should draw all elements' do
