@@ -5,21 +5,14 @@ require_relative 'explosive'
 
 class Bullet < VisualElement
 
+  include Explosive
+
   def update(mouse_x, mouse_y)
     if moved?
       enqueue_action(MoveAction)
     else
       enqueue_action(ExplodeAction)
     end
-  end
-
-  def explode!
-    @image = Explosive::IMAGE
-    @exploded = true
-  end
-
-  def exploded?
-    @exploded ||= false
   end
 
   protected
