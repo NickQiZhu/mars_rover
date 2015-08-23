@@ -1,6 +1,7 @@
 require_relative 'visual_element'
 require_relative 'move_action'
 require_relative 'explode_action'
+require_relative 'explosive'
 
 class Bullet < VisualElement
 
@@ -10,6 +11,15 @@ class Bullet < VisualElement
     else
       enqueue_action(ExplodeAction)
     end
+  end
+
+  def explode!
+    @image = Explosive::IMAGE
+    @exploded = true
+  end
+
+  def exploded?
+    @exploded ||= false
   end
 
   protected

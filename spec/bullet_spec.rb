@@ -25,4 +25,20 @@ describe Bullet do
       expect(bullet.action_queue.last).to be_a(ExplodeAction)
     end
   end
+
+  describe '#explode!' do
+    it 'should change image to explosion.png' do
+      bullet.explode!
+      expect(bullet.image).to eq(Explosive::IMAGE)
+    end
+
+    it 'should not be exploded initially' do
+      expect(bullet.exploded?).to be_falsey
+    end
+
+    it 'should change exploded flag to true' do
+      bullet.explode!
+      expect(bullet.exploded?).to be_truthy
+    end
+  end
 end
