@@ -1,6 +1,6 @@
 require_relative 'visual_element'
 require_relative 'move_action'
-require_relative 'explode_action'
+require_relative 'explosion_action'
 require_relative 'explosive'
 
 class Bullet < VisualElement
@@ -11,7 +11,7 @@ class Bullet < VisualElement
     if moved?
       enqueue_action(MoveAction)
     else
-      enqueue_action(ExplodeAction)
+      enqueue_action(ExplosionAction)
     end
   end
 

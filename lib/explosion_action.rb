@@ -1,6 +1,6 @@
 require_relative 'base_action'
 
-class ExplodeAction < BaseAction
+class ExplosionAction < BaseAction
 
   def execute
     element.explode!

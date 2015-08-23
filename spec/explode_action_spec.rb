@@ -1,9 +1,9 @@
 require 'spec_helper.rb'
 
-describe ExplodeAction do
+describe ExplosionAction do
   let(:game) { Game.new }
   let(:bullet) { Bullet.new(game) }
-  subject(:action) { ExplodeAction.new(game, bullet) }
+  subject(:action) { ExplosionAction.new(game, bullet) }
 
   describe '#execute' do
     before(:each) { game.elements << bullet }
