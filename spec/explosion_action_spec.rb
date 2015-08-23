@@ -12,5 +12,10 @@ describe ExplosionAction do
       action.execute
       expect(bullet.exploded?).to be_truthy
     end
+
+    it 'should enqueue elimination action' do
+      action.execute
+      expect(bullet.action_queue.last).to be_a(EliminationAction)
+    end
   end
 end

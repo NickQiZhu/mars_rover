@@ -39,6 +39,10 @@ class VisualElement
     0
   end
 
+  def enqueue_action(action_class)
+    BaseAction.enqueue(@action_queue) { action_class.new(game, self) }
+  end
+
   protected
 
   def load_image
@@ -47,10 +51,6 @@ class VisualElement
 
   def draw_image
     image.draw_rot(x_pos, y_pos, z_index, angle)
-  end
-
-  def enqueue_action(action_class)
-    BaseAction.enqueue(@action_queue) { action_class.new(game, self) }
   end
 
   private
