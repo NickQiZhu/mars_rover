@@ -7,6 +7,8 @@ module Positionable
     @x_pos = x
     @y_pos = y
     @angle = angle if angle
+
+    self
   end
 
   def turn(degree)

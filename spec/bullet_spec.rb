@@ -7,7 +7,7 @@ describe Bullet do
   subject(:bullet) { Bullet.new(game) }
 
   describe '#initialize' do
-    it 'should load background image' do
+    it 'should load image' do
       expect(bullet.image).to be_a(Gosu::Image)
     end
   end

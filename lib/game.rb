@@ -3,6 +3,7 @@ require 'gosu'
 require_relative 'background'
 require_relative 'tank'
 require_relative 'mouse'
+require_relative 'rock'
 
 class Game < Gosu::Window
   DEFAULT_WIDTH = 1024
@@ -18,7 +19,9 @@ class Game < Gosu::Window
   end
 
   def setup
-    @elements << Background.new(self) << Tank.new(self) << Mouse.new(self)
+    setup_core_elements
+
+    setup_obstacles
   end
 
   def start
@@ -58,6 +61,18 @@ class Game < Gosu::Window
   end
 
   private
+
+  def setup_core_elements
+    @elements << Background.new(self) << Tank.new(self) << Mouse.new(self)
+  end
+
+  def setup_obstacles
+    @elements << Rock.new(self).set_position(400, 200)
+    @elements << Rock.new(self).set_position(490, 220)
+    @elements << Rock.new(self).set_position(580, 210)
+    @elements << Rock.new(self).set_position(460, 290)
+    @elements << Rock.new(self).set_position(550, 320)
+  end
 
   def redraw_all_elements
     each_element { |e| e.draw }
