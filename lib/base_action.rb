@@ -21,4 +21,8 @@ class BaseAction
   def same_command?(cmd)
     cmd.class == self.class
   end
+
+  def execute
+    raise 'Not implemented method'
+  end
 end
