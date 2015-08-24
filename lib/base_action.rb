@@ -23,6 +23,6 @@ class BaseAction
   end
 
   def execute
-    raise 'Not implemented method'
+    # abstract method
   end
 end

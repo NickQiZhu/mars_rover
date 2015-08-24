@@ -22,7 +22,9 @@ describe Bullet do
     it 'should enqueue explode action when stopped' do
       expect(bullet).to receive(:moved?).and_return(false)
       bullet.update(0, 0)
-      expect(bullet.last_action).to be_a(ExplosionAction)
+      action = bullet.last_action
+      expect(action).to be_a(TimedAction)
+      expect(action.delegate).to be_a(ExplosionAction)
     end
   end
 

@@ -2,11 +2,11 @@ require_relative 'base_action'
 
 class TimedAction < BaseAction
 
-  attr_accessor :delegate_action
+  attr_accessor :delegate
 
   def initialize(game, element, delegate_action)
     super game, element
-    @delegate_action = delegate_action
+    @delegate = delegate_action
   end
 
   def expires_on(t)
@@ -15,7 +15,7 @@ class TimedAction < BaseAction
 
   def execute
     if expired?
-      delegate_action.execute
+      delegate.execute
     else
       element.action_queue << self
     end

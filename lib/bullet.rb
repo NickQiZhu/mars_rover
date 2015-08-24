@@ -1,5 +1,6 @@
 require_relative 'visual_element'
 require_relative 'move_action'
+require_relative 'timed_action'
 require_relative 'explosion_action'
 require_relative 'explosive'
 
@@ -24,7 +25,9 @@ class Bullet < VisualElement
   end
 
   def explode
-    enqueue_action(ExplosionAction)
+    BaseAction.enqueue(@action_queue) do
+      TimedAction.new(game, self, ExplosionAction.new(game, self))
+    end
   end
 
   def move
