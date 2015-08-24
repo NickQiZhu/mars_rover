@@ -72,7 +72,7 @@ describe VisualElement do
 
     it 'should return true if two elements are just touching' do
       e1.set_position(0, 0)
-      e2.set_position(0, 10)
+      e2.set_position(0, 6)
       expect(e1.overlap?(e2)).to be_truthy
     end
 
