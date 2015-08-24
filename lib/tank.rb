@@ -48,14 +48,6 @@ class Tank < VisualElement
     end
   end
 
-  def width
-    50
-  end
-
-  def height
-    50
-  end
-
   protected
 
   def load_image

@@ -32,11 +32,11 @@ class VisualElement
   end
 
   def width
-    0
+    image ? image.width : 0
   end
 
   def height
-    0
+    image ? image.height : 0
   end
 
   def enqueue_action(action_class)
@@ -45,6 +45,15 @@ class VisualElement
 
   def last_action
     action_queue.last
+  end
+
+  def overlap?(e)
+    distance = ((x_pos - e.x_pos)**2 + (y_pos - e.y_pos)**2)**0.5
+    if distance > width + e.width
+      false
+    else
+      true
+    end
   end
 
   protected

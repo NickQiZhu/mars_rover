@@ -2,7 +2,8 @@ require 'spec_helper.rb'
 
 describe VisualElement do
 
-  let(:element) { VisualElement.new(instance_double(Game)) }
+  let(:game) { instance_double(Game) }
+  let(:element) { VisualElement.new(game) }
 
   it 'should set default size to 0x0' do
     expect(element.width).to eq(0)
@@ -42,6 +43,43 @@ describe VisualElement do
     it 'should draw image' do
       expect(element.image).to receive(:draw_rot).with(x, y, element.z_index, angle)
       element.draw
+    end
+  end
+
+  describe '#overlap?' do
+    let(:e1) { VisualElement.new(game) }
+    let(:e2) { VisualElement.new(game) }
+
+    before(:each) do
+      allow(e1).to receive(:width).and_return(10)
+      allow(e1).to receive(:height).and_return(10)
+
+      allow(e2).to receive(:width).and_return(4)
+      allow(e2).to receive(:height).and_return(4)
+    end
+
+    it 'should return false if elements have no overlap' do
+      e1.set_position(1, 1)
+      e2.set_position(20, 20)
+      expect(e1.overlap?(e2)).to be_falsey
+    end
+
+    it 'should return true if elements have overlap' do
+      e1.set_position(1, 1)
+      e2.set_position(5, 5)
+      expect(e1.overlap?(e2)).to be_truthy
+    end
+
+    it 'should return true if two elements are just touching' do
+      e1.set_position(0, 0)
+      e2.set_position(0, 10)
+      expect(e1.overlap?(e2)).to be_truthy
+    end
+
+    it 'should return true if two elements are close but not touching' do
+      e1.set_position(0, 0)
+      e2.set_position(0, 15)
+      expect(e1.overlap?(e2)).to be_falsey
     end
   end
 

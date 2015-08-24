@@ -13,11 +13,6 @@ describe Tank do
     it 'should load image' do
       expect(vehicle.image).to_not be_nil
     end
-
-    it 'should set size' do
-      expect(vehicle.width).to be > 0
-      expect(vehicle.height).to be > 0
-    end
   end
 
   describe 'action method' do
