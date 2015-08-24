@@ -13,9 +13,11 @@ describe ExplosionAction do
       expect(bullet.exploded?).to be_truthy
     end
 
-    it 'should enqueue elimination action' do
+    it 'should enqueue time delayed elimination action' do
       action.execute
-      expect(bullet.last_action).to be_a(EliminationAction)
+      action = bullet.last_action
+      expect(action).to be_a(TimedAction)
+      expect(action.delegate).to be_a(EliminationAction)
     end
   end
 end
