@@ -14,7 +14,11 @@ class TimedAction < BaseAction
   end
 
   def execute
-    delegate_action.execute if expired?
+    if expired?
+      delegate_action.execute
+    else
+      element.action_queue << self
+    end
   end
 
   def expired?

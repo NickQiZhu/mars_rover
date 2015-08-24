@@ -43,6 +43,10 @@ class VisualElement
     BaseAction.enqueue(@action_queue) { action_class.new(game, self) }
   end
 
+  def last_action
+    action_queue.last
+  end
+
   protected
 
   def load_image
