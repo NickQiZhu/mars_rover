@@ -71,4 +71,10 @@ describe Game do
       game.button_down(Gosu::KbEscape)
     end
   end
+
+  describe '#collision?' do
+    it 'should return false if no colliding element found' do
+      game.elements
+    end
+  end
 end

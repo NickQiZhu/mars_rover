@@ -1,7 +1,7 @@
 require 'spec_helper.rb'
 
 describe Mouse do
-  include ImageHelper
+  include TestHelper
 
   let(:game) { instance_double(Game) }
   subject(:mouse) { Mouse.new(game) }

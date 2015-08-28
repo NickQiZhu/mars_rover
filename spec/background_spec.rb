@@ -1,7 +1,7 @@
 require 'spec_helper.rb'
 
 describe Background do
-  include ImageHelper
+  include TestHelper
 
   GAME_WIDTH = 12
   GAME_HEIGHT = 15

@@ -1,7 +1,7 @@
 require 'spec_helper.rb'
 
 describe Bullet do
-  include ImageHelper
+  include TestHelper
 
   let(:game) { instance_double(Game) }
   subject(:bullet) { Bullet.new(game) }

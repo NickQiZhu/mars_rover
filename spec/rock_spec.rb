@@ -1,7 +1,7 @@
 require 'spec_helper.rb'
 
 describe Rock do
-  include ImageHelper
+  include TestHelper
 
   let(:game) { instance_double(Game) }
   subject(:rock) { Rock.new(game) }

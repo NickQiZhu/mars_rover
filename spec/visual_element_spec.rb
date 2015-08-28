@@ -2,6 +2,8 @@ require 'spec_helper.rb'
 
 describe VisualElement do
 
+  include TestHelper
+
   let(:game) { instance_double(Game) }
   let(:element) { VisualElement.new(game) }
 
@@ -47,16 +49,8 @@ describe VisualElement do
   end
 
   describe '#overlap?' do
-    let(:e1) { VisualElement.new(game) }
-    let(:e2) { VisualElement.new(game) }
-
-    before(:each) do
-      allow(e1).to receive(:width).and_return(10)
-      allow(e1).to receive(:height).and_return(10)
-
-      allow(e2).to receive(:width).and_return(4)
-      allow(e2).to receive(:height).and_return(4)
-    end
+    let(:e1) { mock_sized_element(game, 10, 10) }
+    let(:e2) { mock_sized_element(game, 4, 4) }
 
     it 'should return false if elements have no overlap' do
       e1.set_position(1, 1)
