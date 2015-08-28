@@ -20,13 +20,13 @@ describe Background do
      {w: 20, h: 15}, {w: 12, h: 20}].each do |size|
       it %{should draw image only once if image has
             size(#{size[:w]},#{size[:h]}) and game has size(#{GAME_WIDTH},#{GAME_HEIGHT})} do
-        expect_draw(mock_image(size[:w], size[:h]), 0, 0, background.z_index)
+        expect_draw(image_double(size[:w], size[:h]), 0, 0, background.z_index)
         background.draw
       end
     end
 
     it 'should tile image both horizontally and vertically if image is small in both width and height' do
-      image = mock_image(5, 4)
+      image = image_double(5, 4)
 
       [0, 4, 8, 12].each do |y|
         [0, 5, 10].each do |x|

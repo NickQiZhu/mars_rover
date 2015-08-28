@@ -16,7 +16,7 @@ describe Mouse do
     it 'should draw' do
       x = 101; y = 204
       mouse.set_position(x, y)
-      expect_draw(mock_image, x, y, mouse.z_index)
+      expect_draw(image_double, x, y, mouse.z_index)
       mouse.draw
     end
   end

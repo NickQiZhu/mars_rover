@@ -60,6 +60,11 @@ class Game < Gosu::Window
     @elements.each &block
   end
 
+  def collision?(element)
+    each_element { |e| return true if e.overlap?(element) }
+    false
+  end
+
   private
 
   def setup_core_elements
