@@ -60,9 +60,9 @@ class Game < Gosu::Window
     @elements.each &block
   end
 
-  def collision?(element)
+  def collision?(element, exclude_list = [])
     each_element { |e|
-      if e != element && e.overlap?(element)
+      if e != element && !exclude_list.include?(e) && e.overlap?(element)
         return true
       end
     }
