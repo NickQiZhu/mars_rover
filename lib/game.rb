@@ -61,7 +61,11 @@ class Game < Gosu::Window
   end
 
   def collision?(element)
-    each_element { |e| return true if e.overlap?(element) }
+    each_element { |e|
+      if e != element && e.overlap?(element)
+        return true
+      end
+    }
     false
   end
 

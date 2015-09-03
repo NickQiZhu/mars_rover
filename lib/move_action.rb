@@ -15,7 +15,7 @@ class MoveAction < BaseAction
     x1 = x - Gosu::offset_x(element.angle, STEP_SIZE)
     y1 = y - Gosu::offset_y(element.angle, STEP_SIZE)
 
-    if on_boundaries?(x1, y1)
+    if on_boundaries?(x1, y1) || game.collision?(element)
       return x, y
     else
       return x1, y1
