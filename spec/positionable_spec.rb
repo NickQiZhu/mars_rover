@@ -27,4 +27,48 @@ describe Positionable do
     end
   end
 
+  describe '#overlap?' do
+    let(:e1) { position_double(10, 10) }
+    let(:e2) { position_double(4, 4) }
+    let(:e_on_diff_plane) { position_double(4, 4, 2) }
+
+    it 'should return false if elements have no overlap' do
+      e1.set_position(1, 1)
+      e2.set_position(20, 20)
+      expect(e1.overlap?(e2)).to be_falsey
+    end
+
+    it 'should return true if elements have overlap' do
+      e1.set_position(1, 1)
+      e2.set_position(5, 5)
+      expect(e1.overlap?(e2)).to be_truthy
+    end
+
+    it 'should return false if elements have overlap on different planes' do
+      e1.set_position(1, 1)
+      e_on_diff_plane.set_position(5, 5)
+      expect(e1.overlap?(e_on_diff_plane)).to be_falsey
+    end
+
+    it 'should return true if two elements are just touching' do
+      e1.set_position(0, 0)
+      e2.set_position(0, 6)
+      expect(e1.overlap?(e2)).to be_truthy
+    end
+
+    it 'should return true if two elements are close but not touching' do
+      e1.set_position(0, 0)
+      e2.set_position(0, 15)
+      expect(e1.overlap?(e2)).to be_falsey
+    end
+  end
+
+  def position_double(w, h, z = 1)
+    pos = klass.new
+    allow(pos).to receive(:width).and_return(w)
+    allow(pos).to receive(:height).and_return(h)
+    allow(pos).to receive(:z_index).and_return(z)
+    pos
+  end
+
 end

@@ -48,40 +48,4 @@ describe VisualElement do
     end
   end
 
-  describe '#overlap?' do
-    let(:e1) { stub_element(game, 10, 10) }
-    let(:e2) { stub_element(game, 4, 4) }
-    let(:e_on_diff_plane) { stub_element(game, 4, 4, z_index: 2) }
-
-    it 'should return false if elements have no overlap' do
-      e1.set_position(1, 1)
-      e2.set_position(20, 20)
-      expect(e1.overlap?(e2)).to be_falsey
-    end
-
-    it 'should return true if elements have overlap' do
-      e1.set_position(1, 1)
-      e2.set_position(5, 5)
-      expect(e1.overlap?(e2)).to be_truthy
-    end
-
-    it 'should return false if elements have overlap on different planes' do
-      e1.set_position(1, 1)
-      e_on_diff_plane.set_position(5, 5)
-      expect(e1.overlap?(e_on_diff_plane)).to be_falsey
-    end
-
-    it 'should return true if two elements are just touching' do
-      e1.set_position(0, 0)
-      e2.set_position(0, 6)
-      expect(e1.overlap?(e2)).to be_truthy
-    end
-
-    it 'should return true if two elements are close but not touching' do
-      e1.set_position(0, 0)
-      e2.set_position(0, 15)
-      expect(e1.overlap?(e2)).to be_falsey
-    end
-  end
-
 end

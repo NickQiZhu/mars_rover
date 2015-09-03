@@ -27,10 +27,6 @@ class VisualElement
     Gosu::button_down?(key)
   end
 
-  def z_index
-    1
-  end
-
   def width
     image ? image.width : 0
   end
@@ -45,15 +41,6 @@ class VisualElement
 
   def last_action
     action_queue.last
-  end
-
-  def overlap?(e)
-    distance = ((x_pos - e.x_pos)**2 + (y_pos - e.y_pos)**2)**0.5
-    if distance < (width + e.width)/2.0 && e.z_index == z_index
-      true
-    else
-      false
-    end
   end
 
   protected
