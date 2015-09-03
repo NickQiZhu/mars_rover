@@ -20,7 +20,7 @@ module Positionable
   end
 
   def z_index
-    1
+    @z_index ||= 1
   end
 
   def width
