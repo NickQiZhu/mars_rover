@@ -5,14 +5,6 @@ require_relative 'explosive'
 
 class Rock < VisualElement
 
-  def width
-    @image.width
-  end
-
-  def height
-    @image.height
-  end
-
   protected
 
   def load_image
