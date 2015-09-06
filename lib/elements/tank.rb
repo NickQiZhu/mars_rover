@@ -10,6 +10,8 @@ class Tank < VisualElement
   def initialize(game)
     super game
     set_position 220, 640, 0
+    @width = 40
+    @height = 40
     gun_ready!
   end
 

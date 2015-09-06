@@ -2,6 +2,12 @@ require_relative 'visual_element'
 
 class Background < VisualElement
 
+  def initialize(game)
+    super game
+    @width = game.width
+    @height = game.height
+  end
+
   def z_index
     0
   end

@@ -7,6 +7,12 @@ class Bullet < VisualElement
 
   include Explosive
 
+  def initialize(game)
+    super game
+    @width = 20
+    @height = 20
+  end
+
   def update(mouse_x, mouse_y)
     moving? ? move : explode
   end

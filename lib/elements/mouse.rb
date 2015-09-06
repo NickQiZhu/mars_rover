@@ -4,6 +4,12 @@ require_relative '../traits/positionable'
 class Mouse < VisualElement
   include Positionable
 
+  def initialize(game)
+    super game
+    @width = 95
+    @height = 95
+  end
+
   def z_index
     100
   end

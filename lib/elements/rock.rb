@@ -5,6 +5,12 @@ require_relative '../traits/explosive'
 
 class Rock < VisualElement
 
+  def initialize(game)
+    super game
+    @width = 90
+    @height = 80
+  end
+
   protected
 
   def load_image
