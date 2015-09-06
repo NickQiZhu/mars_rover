@@ -4,6 +4,19 @@ describe Positionable do
   let(:klass) { Class.new { include Positionable } }
   subject(:object) { klass.new }
 
+  describe 'size' do
+    it 'should be set to 0 initially' do
+      expect(object.width).to eq(0)
+      expect(object.height).to eq(0)
+    end
+
+    it 'should be changeable' do
+      object.width = 10; object.height = 20
+      expect(object.width).to eq(10)
+      expect(object.height).to eq(20)
+    end
+  end
+
   describe '#moved?' do
     it 'should false initially' do
       expect(object.moved?).to be_falsey

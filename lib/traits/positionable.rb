@@ -1,5 +1,5 @@
 module Positionable
-  attr_accessor :x_pos, :y_pos, :angle
+  attr_accessor :x_pos, :y_pos, :angle, :width, :height
 
   def set_position(x, y, angle = nil)
     detect_movement(angle, x, y)
@@ -24,11 +24,11 @@ module Positionable
   end
 
   def width
-    0
+    @width ||= 0
   end
 
   def height
-    0
+    @height ||= 0
   end
 
   def overlap?(e)

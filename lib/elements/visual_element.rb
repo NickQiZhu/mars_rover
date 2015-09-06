@@ -27,14 +27,6 @@ class VisualElement
     Gosu::button_down?(key)
   end
 
-  def width
-    image ? image.width : 0
-  end
-
-  def height
-    image ? image.height : 0
-  end
-
   def enqueue_action(action_class)
     BaseAction.enqueue(@action_queue) { action_class.new(game, self) }
   end

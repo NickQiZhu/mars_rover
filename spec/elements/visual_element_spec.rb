@@ -7,11 +7,6 @@ describe VisualElement do
   let(:game) { instance_double(Game) }
   let(:element) { VisualElement.new(game) }
 
-  it 'should set default size to 0x0' do
-    expect(element.width).to eq(0)
-    expect(element.height).to eq(0)
-  end
-
   describe '#draw' do
     let(:action) { instance_double(MoveAction) }
 
