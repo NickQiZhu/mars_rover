@@ -20,7 +20,6 @@ class Game < Gosu::Window
 
   def setup
     setup_core_elements
-
     setup_obstacles
   end
 
@@ -61,11 +60,10 @@ class Game < Gosu::Window
   end
 
   def collision?(element, exclude_list = [])
-    each_element { |e|
-      if e != element && !exclude_list.include?(e) && e.overlap?(element)
-        return true
-      end
-    }
+    each_element do |e|
+      return true if found_overlap?(e, element, exclude_list)
+    end
+
     false
   end
 
@@ -76,11 +74,17 @@ class Game < Gosu::Window
   end
 
   def setup_obstacles
-    @elements << Rock.new(self).set_position(400, 200)
-    @elements << Rock.new(self).set_position(490, 220)
-    @elements << Rock.new(self).set_position(580, 210)
-    @elements << Rock.new(self).set_position(460, 290)
-    @elements << Rock.new(self).set_position(550, 320)
+    [[400, 200], [490, 220], [580, 210], [460, 290], [550, 300]].each do |position|
+      place_rock *position
+    end
+  end
+
+  def place_rock(x, y)
+    @elements << Rock.new(self).set_position(x, y)
+  end
+
+  def found_overlap?(e, element, exclude_list)
+    e != element && !exclude_list.include?(e) && e.overlap?(element)
   end
 
   def redraw_all_elements
