@@ -1,4 +1,6 @@
 module Explosive
+  attr_reader :image
+
   IMAGE = Gosu::Image.new('media/explosion.png')
 
   def explode!
