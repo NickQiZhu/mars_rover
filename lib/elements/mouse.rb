@@ -1,5 +1,5 @@
 require_relative 'visual_element'
-require_relative 'positionable'
+require_relative '../positionable'
 
 class Mouse < VisualElement
   include Positionable

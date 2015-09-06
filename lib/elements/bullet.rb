@@ -1,7 +1,7 @@
 require_relative 'visual_element'
-require_relative 'actions/move_action'
-require_relative 'actions/explosion_action'
-require_relative 'explosive'
+require_relative '../actions/move_action'
+require_relative '../actions/explosion_action'
+require_relative '../explosive'
 
 class Bullet < VisualElement
 

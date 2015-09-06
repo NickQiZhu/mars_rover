@@ -1,9 +1,9 @@
 require 'gosu'
 
-require_relative 'background'
-require_relative 'tank'
-require_relative 'mouse'
-require_relative 'rock'
+require_relative 'elements/background'
+require_relative 'elements/tank'
+require_relative 'elements/mouse'
+require_relative 'elements/rock'
 
 class Game < Gosu::Window
   DEFAULT_WIDTH = 1024
