@@ -1,8 +1,8 @@
 require_relative 'visual_element'
-require_relative 'move_action'
-require_relative 'left_turn_action'
-require_relative 'right_turn_action'
-require_relative 'fire_action'
+require_relative 'action/move_action'
+require_relative 'action/left_turn_action'
+require_relative 'action/right_turn_action'
+require_relative 'action/fire_action'
 
 class Tank < VisualElement
   FIRING_INTERVAL = 0.5

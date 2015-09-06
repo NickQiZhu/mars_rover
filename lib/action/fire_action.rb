@@ -1,5 +1,5 @@
 require_relative 'base_action'
-require_relative 'bullet'
+require_relative '../bullet'
 
 class FireAction < BaseAction
 
