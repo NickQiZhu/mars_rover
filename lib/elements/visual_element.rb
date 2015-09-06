@@ -1,4 +1,4 @@
-require_relative '../positionable'
+require_relative '../traits/positionable'
 
 class VisualElement
   attr_accessor :image, :action_queue
