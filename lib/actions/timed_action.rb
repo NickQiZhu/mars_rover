@@ -17,12 +17,18 @@ class TimedAction < BaseAction
     if expired?
       delegate.execute
     else
-      element.action_queue << self
+      wait
     end
   end
 
   def expired?
     Time.now > @expires_on
+  end
+
+  private
+
+  def wait
+    element.action_queue << self
   end
 
 end
