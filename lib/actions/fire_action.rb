@@ -8,11 +8,17 @@ class FireAction < BaseAction
   end
 
   def execute
+    game.add_element fire_bullet
+  end
+
+  private
+
+  def fire_bullet
     bullet = Bullet.new(game)
     x = element.x_pos + Gosu::offset_x(element.angle, element.width)
     y = element.y_pos + Gosu::offset_y(element.angle, element.height)
     bullet.set_position(x, y, element.angle)
-    game.add_element bullet
+    bullet
   end
 
 end
