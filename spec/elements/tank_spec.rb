@@ -6,8 +6,8 @@ describe Tank do
 
   describe '#initialize' do
     it 'should set initial position' do
-      expect(vehicle.x_pos).to be >= 0
-      expect(vehicle.y_pos).to be >= 0
+      expect(vehicle.x).to be >= 0
+      expect(vehicle.y).to be >= 0
     end
 
     it 'should load image' do
@@ -69,8 +69,8 @@ describe Tank do
     describe '#position' do
       it 'should set x, y, angle directly' do
         vehicle.set_position x, y, angle
-        expect(vehicle.x_pos).to eq(x)
-        expect(vehicle.y_pos).to eq(y)
+        expect(vehicle.x).to eq(x)
+        expect(vehicle.y).to eq(y)
         expect(vehicle.angle).to eq(angle)
       end
 

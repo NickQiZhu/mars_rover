@@ -4,18 +4,15 @@ class MoveAction < BaseAction
   STEP_SIZE = -2
 
   def execute
-    x = element.x_pos
-    y = element.y_pos
-
-    x1 = x - Gosu::offset_x(element.angle, STEP_SIZE)
-    y1 = y - Gosu::offset_y(element.angle, STEP_SIZE)
+    x1 = element.x - Gosu::offset_x(element.angle, STEP_SIZE)
+    y1 = element.y - Gosu::offset_y(element.angle, STEP_SIZE)
 
     moved_dup_e = gen_moved_dup(x1, y1)
 
     if blocked?(moved_dup_e)
-      element.set_position(x, y)
+      stop_element
     else
-      element.set_position(x1, y1)
+      move_element_to(x1, y1)
     end
   end
 
@@ -36,11 +33,19 @@ class MoveAction < BaseAction
   end
 
   def y_out_of_bound(e)
-    e.y_pos < 0 || e.y_pos > game.height
+    e.y < 0 || e.y > game.height
   end
 
   def x_out_of_bound(e)
-    e.x_pos < 0 || e.x_pos > game.width
+    e.x < 0 || e.x > game.width
+  end
+
+  def stop_element
+    element.set_position(element.x, element.y)
+  end
+
+  def move_element_to(x1, y1)
+    element.set_position(x1, y1)
   end
 
 end

@@ -2,7 +2,7 @@ require_relative '../spec_helper.rb'
 
 describe TurnAction do
   let(:game) { instance_double(Game) }
-  let(:vehicle) { instance_double(Tank, x_pos: 10, y_pos: 10, angle: 0) }
+  let(:vehicle) { instance_double(Tank, x: 10, y: 10, angle: 0) }
   subject(:action) { TurnAction.new(game, vehicle, 10) }
 
   describe '#execute' do

@@ -15,8 +15,8 @@ class Mouse < VisualElement
   end
 
   def update(mouse_x, mouse_y)
-    self.x_pos = mouse_x
-    self.y_pos = mouse_y
+    self.x = mouse_x
+    self.y = mouse_y
   end
 
   protected
@@ -26,6 +26,6 @@ class Mouse < VisualElement
   end
 
   def draw_image
-    @image.draw(x_pos, y_pos, z_index)
+    @image.draw(x, y, z_index)
   end
 end

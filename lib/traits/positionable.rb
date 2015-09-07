@@ -1,11 +1,11 @@
 module Positionable
-  attr_accessor :x_pos, :y_pos, :angle, :width, :height
+  attr_accessor :x, :y, :angle, :width, :height
 
   def set_position(x, y, angle = nil)
     detect_movement(angle, x, y)
 
-    @x_pos = x
-    @y_pos = y
+    @x = x
+    @y = y
     @angle = angle if angle
 
     self
@@ -32,7 +32,7 @@ module Positionable
   end
 
   def overlap?(e)
-    distance = ((x_pos - e.x_pos)**2 + (y_pos - e.y_pos)**2)**0.5
+    distance = ((x - e.x)**2 + (y - e.y)**2)**0.5
     if distance < (width + e.width)/2.0 && e.z_index == z_index
       true
     else
@@ -47,7 +47,7 @@ module Positionable
   end
 
   def same_position?(angle, x, y)
-    @x_pos == x && @y_pos == y && (angle.nil? || @angle == angle)
+    @x == x && @y == y && (angle.nil? || @angle == angle)
   end
 end
 
