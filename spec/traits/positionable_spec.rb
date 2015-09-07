@@ -17,6 +17,32 @@ describe Positionable do
     end
   end
 
+  describe '#set_position' do
+    let(:x) { 10 }; let(:y) { 15 }; let(:angle) { 4 }
+
+    it 'should set x, y, angle directly' do
+      object.set_position x, y, angle
+      expect(object.x).to eq(x)
+      expect(object.y).to eq(y)
+      expect(object.angle).to eq(angle)
+    end
+
+    it 'should ignore angle if not given' do
+      object.set_position x, y, angle
+      object.set_position x, y
+      expect(object.angle).to eq(angle)
+    end
+  end
+
+  describe '#turn' do
+    let(:angle) { 5 }
+
+    it 'should change angle by given degree' do
+      object.turn(angle)
+      expect(object.angle).to eq(angle)
+    end
+  end
+
   describe '#moved?' do
     it 'should false initially' do
       expect(object.moved?).to be_falsey

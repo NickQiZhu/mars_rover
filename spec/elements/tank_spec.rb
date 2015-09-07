@@ -39,7 +39,7 @@ describe Tank do
       expect(vehicle.gun_ready?).to be_falsey
     end
 
-    it 'consecutive firing should only fire once' do
+    it 'quick consecutive firing should only trigger once' do
       3.times { vehicle.fire }
       expect(vehicle.action_queue.size).to eq(1)
     end
@@ -59,32 +59,6 @@ describe Tank do
         expect(Gosu).to receive(:button_down?).with(test_case[:key_pressed]).and_return(true)
         expect(vehicle).to receive(test_case[:action_to_trigger])
         vehicle.update(0, 0)
-      end
-    end
-  end
-
-  context 'position related methods' do
-    let(:x) { 10 }; let(:y) { 15 }; let(:angle) { 4 }
-
-    describe '#position' do
-      it 'should set x, y, angle directly' do
-        vehicle.set_position x, y, angle
-        expect(vehicle.x).to eq(x)
-        expect(vehicle.y).to eq(y)
-        expect(vehicle.angle).to eq(angle)
-      end
-
-      it 'should ignore angle if not given' do
-        vehicle.set_position x, y, angle
-        vehicle.set_position x, y
-        expect(vehicle.angle).to eq(angle)
-      end
-    end
-
-    describe '#turn' do
-      it 'should change vehicle angle by given degree' do
-        vehicle.turn(angle)
-        expect(vehicle.angle).to eq(angle)
       end
     end
   end

@@ -39,7 +39,7 @@ describe MoveAction do
         action.execute
       end
 
-      it 'should not slide on right border' do
+      it 'should not slide on west border' do
         vehicle.set_position(game.width, game.height, 80)
         expect(vehicle).to receive(:set_position).with(game.width, game.height)
         action.execute
