@@ -42,15 +42,13 @@ class VisualElement
   end
 
   def draw_image
-    image.draw_rot(x, y, z_index, angle)
+    image.draw_rot(x, y, z_index, angle) if image
   end
 
   private
 
   def execute_command
-    unless @action_queue.empty?
-      dequeue_command.execute
-    end
+    dequeue_command.execute unless @action_queue.empty?
   end
 
   def dequeue_command

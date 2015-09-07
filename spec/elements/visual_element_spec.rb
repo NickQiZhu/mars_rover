@@ -8,22 +8,15 @@ describe VisualElement do
   let(:element) { VisualElement.new(game) }
 
   describe '#draw' do
-    let(:action) { instance_double(MoveAction) }
-
-    let(:x) { 10 }; let(:y) { 15 }; let(:angle) { 4 }
+    let(:action) { instance_double(BaseAction) }
 
     before(:each) do
       expect(action).to receive(:execute)
       element.action_queue << action
-
-      element.image = instance_double(Gosu::Image)
-      allow(element.image).to receive(:draw_rot)
-      element.set_position x, y
-      element.turn(angle)
     end
 
     it 'should execute first queued commands' do
-      element.action_queue << instance_double(MoveAction)
+      element.action_queue << instance_double(BaseAction)
       element.draw
     end
 
@@ -36,8 +29,14 @@ describe VisualElement do
       expect(element).to receive(:draw_image)
       element.draw
     end
+  end
+
+  describe '#draw_image' do
+    let(:x) { 10 }; let(:y) { 15 }; let(:angle) { 4 }
 
     it 'should draw image' do
+      element.set_position x, y, angle
+      element.image = instance_double(Gosu::Image)
       expect(element.image).to receive(:draw_rot).with(x, y, element.z_index, angle)
       element.draw
     end
