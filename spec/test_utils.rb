@@ -1,4 +1,4 @@
-module TestHelper
+module TestUtils
   def expect_draw(image, x, y, z)
     expect(image).to receive(:draw).with(x, y, z)
   end

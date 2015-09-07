@@ -2,7 +2,7 @@ require_relative '../spec_helper.rb'
 
 describe VisualElement do
 
-  include TestHelper
+  include TestUtils
 
   let(:game) { instance_double(Game) }
   let(:element) { VisualElement.new(game) }

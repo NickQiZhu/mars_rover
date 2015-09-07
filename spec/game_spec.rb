@@ -1,7 +1,7 @@
 require 'spec_helper.rb'
 
 describe Game do
-  include TestHelper
+  include TestUtils
 
   subject(:game) { Game.new }
 

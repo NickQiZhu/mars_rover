@@ -1,7 +1,7 @@
 require_relative '../spec_helper.rb'
 
 describe Background do
-  include TestHelper
+  include TestUtils
 
   GAME_WIDTH = 12
   GAME_HEIGHT = 15

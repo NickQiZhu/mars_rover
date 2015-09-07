@@ -1,7 +1,7 @@
 require_relative '../spec_helper.rb'
 
 describe Rock do
-  include TestHelper
+  include TestUtils
 
   let(:game) { instance_double(Game) }
   subject(:rock) { Rock.new(game) }
