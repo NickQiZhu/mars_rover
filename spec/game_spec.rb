@@ -85,10 +85,10 @@ describe Game do
     end
 
     it 'should return false if the colliding element is excluded' do
-          game.add_element same_plane_element
-          e = stub_element(game, 5, 5)
-          expect(game.collision?(e, [same_plane_element])).to be_falsey
-        end
+      game.add_element same_plane_element
+      e = stub_element(game, 5, 5)
+      expect(game.collision?(e, [same_plane_element])).to be_falsey
+    end
 
     it 'should return false if only one element is on the plane' do
       game.add_element same_plane_element

@@ -10,10 +10,9 @@ class MoveAction < BaseAction
     x1 = x - Gosu::offset_x(element.angle, STEP_SIZE)
     y1 = y - Gosu::offset_y(element.angle, STEP_SIZE)
 
-    e = element.dup
-    e.set_position(x1, y1)
+    moved_dup_e = gen_moved_dup(x1, y1)
 
-    if on_boundaries?(e) || game.collision?(e, [element])
+    if blocked?(moved_dup_e)
       element.set_position(x, y)
     else
       element.set_position(x1, y1)
@@ -22,8 +21,26 @@ class MoveAction < BaseAction
 
   private
 
+  def gen_moved_dup(x1, y1)
+    dup_element = element.dup
+    dup_element.set_position(x1, y1)
+    dup_element
+  end
+
+  def blocked?(moved_dup_e)
+    on_boundaries?(moved_dup_e) || game.collision?(moved_dup_e, [element])
+  end
+
   def on_boundaries?(e)
-    e.x_pos < 0 || e.y_pos < 0 || e.x_pos > game.width || e.y_pos > game.height
+    x_out_of_bound(e) || y_out_of_bound(e)
+  end
+
+  def y_out_of_bound(e)
+    e.y_pos < 0 || e.y_pos > game.height
+  end
+
+  def x_out_of_bound(e)
+    e.x_pos < 0 || e.x_pos > game.width
   end
 
 end
