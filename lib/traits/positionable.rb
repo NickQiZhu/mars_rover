@@ -1,16 +1,5 @@
 module Positionable
   attr_accessor :x, :y, :angle, :width, :height
-  attr_reader :z_index, :moved
-
-  alias :moved? :moved
-
-  def initialize
-    @x = 0; @y = 0
-    @angle = 0
-    @width = 0; @height = 0
-    @z_index = 1
-    @moved = false
-  end
 
   def set_position(x, y, angle = nil)
     detect_movement(angle, x, y)
@@ -21,8 +10,29 @@ module Positionable
     self
   end
 
+  def z_index
+    @z_index ||= 1
+  end
+
+  def moved
+    @moved ||= false
+  end
+  alias :moved? :moved
+
+  def angle
+    @angle ||= 0
+  end
+
+  def width
+    @width ||= 0
+  end
+
+  def height
+    @height ||= 0
+  end
+
   def turn(degree)
-    @angle += degree
+    self.angle += degree
   end
 
   def overlap?(e)
