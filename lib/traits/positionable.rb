@@ -1,6 +1,5 @@
 module Positionable
-  attr_accessor :x, :y
-  attr_writer :angle, :width, :height
+  attr_accessor :x, :y, :angle, :width, :height
 
   def set_position(x, y, angle = nil)
     detect_movement(angle, x, y)
@@ -11,12 +10,17 @@ module Positionable
     self
   end
 
-  def moved?
-    @moved ||= false
-  end
-
   def z_index
     @z_index ||= 1
+  end
+
+  def moved
+    @moved ||= false
+  end
+  alias :moved? :moved
+
+  def angle
+    @angle ||= 0
   end
 
   def width
@@ -25,10 +29,6 @@ module Positionable
 
   def height
     @height ||= 0
-  end
-
-  def angle
-    @angle ||= 0
   end
 
   def turn(degree)
